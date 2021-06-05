@@ -1,0 +1,123 @@
+import * as t from "https://deno.land/std/testing/asserts.ts";
+import { Day } from "../Day.js";
+
+Deno.test("init", () => {
+  new Day(2021, 6, 5);
+  new Day(2021, 100);
+  new Day();
+  new Day(new Date());
+  new Day("2021-05-05");
+});
+
+Deno.test("chk", () => {
+  t.assertEquals(new Day(2021, 6, 5).toString(), "2021-06-05");
+  t.assertEquals(new Day(2021, 365).toString(), "2021-12-31");
+  t.assertEquals(new Day(2012, 366).toString(), "2012-12-31");
+  t.assertEquals(new Day(new Date("2021-06-05")).toString(), "2021-06-05");
+  t.assertEquals(new Day(1).toString(), "0001-01-01");
+  t.assertEquals(new Day("2021-06-05").toString(), "2021-06-05");
+});
+
+Deno.test("illegal", () => {
+  t.assertThrows(() => { new Day(2021, 366) });
+  t.assertThrows(() => { new Day(null) });
+  t.assertThrows(() => { new Day(2021, 6, 0) });
+  t.assertThrows(() => { new Day(2021, 13, 1) });
+  t.assertThrows(() => { new Day(2021, 0) });
+  t.assertThrows(() => { new Day("2021-12-42") });
+});
+
+Deno.test("limit", () => {
+  t.assertEquals(new Day(1, 1, 1).toString(), "0001-01-01");
+  t.assertEquals(new Day(9999, 12, 31).toString(), "9999-12-31");
+  t.assertThrows(() => { new Day(0, 1, 1) });
+  t.assertThrows(() => { new Day(-1, 1, 1) });
+  t.assertThrows(() => { new Day(10000, 1, 1) });
+});
+
+Deno.test("nextDay", () => {
+  t.assertEquals(new Day(2021, 6, 5).nextDay().toString(), "2021-06-06");
+  t.assertEquals(new Day(2021, 6, 30).nextDay().toString(), "2021-07-01");
+  t.assertEquals(new Day(2021, 12, 31).nextDay().toString(), "2022-01-01");
+});
+Deno.test("prevDay", () => {
+  t.assertEquals(new Day(2021, 6, 5).prevDay().toString(), "2021-06-04");
+  t.assertEquals(new Day(2021, 6, 1).prevDay().toString(), "2021-05-31");
+  t.assertEquals(new Day(2021, 1, 1).prevDay().toString(), "2020-12-31");
+});
+Deno.test("nextMonth", () => {
+  t.assertEquals(new Day(2021, 6, 5).nextMonth().toString(), "2021-07-05");
+  t.assertEquals(new Day(2021, 5, 31).nextMonth().toString(), "2021-06-30");
+  t.assertEquals(new Day(2021, 12, 31).nextMonth().toString(), "2022-01-31");
+});
+Deno.test("prevMonth", () => {
+  t.assertEquals(new Day(2021, 6, 5).prevMonth().toString(), "2021-05-05");
+  t.assertEquals(new Day(2021, 6, 1).prevMonth().toString(), "2021-05-01");
+  t.assertEquals(new Day(2021, 1, 1).prevMonth().toString(), "2020-12-01");
+});
+Deno.test("getWeek", () => {
+  t.assertEquals(new Day(2021, 6, 5).getWeek(), 6);
+  t.assertEquals(new Day(2021, 6, 6).getWeek(), 0);
+});
+Deno.test("getFirstDayOfMonth", () => {
+  t.assertEquals(new Day(2021, 6, 5).getFirstDayOfMonth().toString(), "2021-06-01");
+  t.assertEquals(new Day(2012, 2, 1).getFirstDayOfMonth().toString(), "2012-02-01");
+});
+Deno.test("getLastDayOfMonth", () => {
+  t.assertEquals(new Day(2021, 6, 5).getLastDayOfMonth().toString(), "2021-06-30");
+  t.assertEquals(new Day(2012, 2, 1).getLastDayOfMonth().toString(), "2012-02-29");
+});
+Deno.test("getDayOfYear", () => {
+  t.assertEquals(new Day(2021, 1, 1).getDayOfYear(), 1);
+  t.assertEquals(new Day(2021, 2, 1).getDayOfYear(), 32);
+  t.assertEquals(new Day(2021, 12, 31).getDayOfYear(), 365);
+  t.assertEquals(new Day(2012, 12, 31).getDayOfYear(), 366);
+});
+Deno.test("getDayOfGregorian", () => {
+  t.assertEquals(new Day(1, 1, 1).getDayOfGregorian(), 1);
+  t.assertEquals(new Day(2, 1, 1).getDayOfGregorian(), 366);
+  t.assertEquals(new Day(2021, 1, 1).getDayOfGregorian(), 737791);
+  t.assertEquals(new Day(2021, 2, 1).getDayOfGregorian(), 737791 + 31);
+  t.assertEquals(new Day(2021, 12, 31).getDayOfGregorian(), 737791 + 364);
+  t.assertEquals(new Day(2012, 12, 31).getDayOfGregorian(), 734868);
+  t.assertEquals(new Day(2021, 6, 5).getDayOfGregorian(), 737946);
+  t.assertEquals(new Day(9999, 12, 31).getDayOfGregorian(), 3652059);
+});
+Deno.test("Gregorian", () => {
+  t.assertEquals(new Day(1).toString(), "0001-01-01");
+  t.assertThrows(() => { new Day(0); });
+  t.assertEquals(new Day(3652059).toString(), "9999-12-31");
+  t.assertThrows(() => { new Day(3652059 + 1); });
+  t.assertEquals(new Day(737946).toString(), "2021-06-05");
+});
+Deno.test("string", () => {
+  t.assertEquals(new Day("0001-12-02").toString(), "0001-12-02");
+  t.assertEquals(new Day("2021-06-05").toString(), "2021-06-05");
+  t.assertThrows(() => new Day("10-10-10"));
+  t.assertThrows(() => new Day("0001-12-00"));
+  t.assertThrows(() => new Day("0001-12-42"));
+  t.assertThrows(() => new Day("01-12-42"));
+});
+Deno.test("dayAfter", () => {
+  t.assertEquals(new Day("2021-06-05").dayAfter(1).toString(), "2021-06-06");
+  t.assertEquals(new Day("2021-06-05").dayAfter(-1).toString(), "2021-06-04");
+  t.assertEquals(new Day("2021-06-05").dayAfter(0).toString(), "2021-06-05");
+  t.assertEquals(new Day("2021-06-05").dayAfter(10).toString(), "2021-06-15");
+  t.assertEquals(new Day("2021-06-05").dayAfter(100).toString(), "2021-09-13");
+});
+Deno.test("dayBefore", () => {
+  t.assertEquals(new Day("2021-06-05").dayBefore(1).toString(), "2021-06-04");
+  t.assertEquals(new Day("2021-06-05").dayBefore(-1).toString(), "2021-06-06");
+  t.assertEquals(new Day("2021-06-05").dayBefore(0).toString(), "2021-06-05");
+  t.assertEquals(new Day("2021-06-05").dayBefore(10).toString(), "2021-05-26");
+  t.assertEquals(new Day("2021-06-05").dayBefore(100).toString(), "2021-02-25");
+});
+Deno.test("subDay", () => {
+  t.assertEquals(new Day("2021-06-05").subDay(new Day("2021-06-04")), 1);
+  t.assertEquals(new Day("2021-06-05").subDay(new Day("2021-06-06")), -1);
+  t.assertEquals(new Day("2021-06-05").subDay(new Day("2020-06-05")), 365);
+  t.assertEquals(new Day("2013-01-01").subDay(new Day("2012-01-01")), 366);
+  t.assertEquals(new Day("2021-06-05").subDay(new Day("2000-01-01")), 7826);
+  t.assertEquals(new Day("2021-11-07").subDay(new Day("2021-06-05")), 155);
+  t.assertEquals(new Day("2021-11-07").subDay(new Day("2021-11-06")), 1);
+});

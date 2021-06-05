@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>test of Day.js</title>
+
+<script type="module" src="./day-calendar.js"></script>
+
+<style>
+.calcell {
+	font-size: 20px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	margin: 1px;
+	padding-top: 10px;
+	width: 13%;
+	height: 50px;
+}
+.sun {
+	background-color: #fbb;
+}
+.holiday {
+	background-color: #f88;
+}
+.sat {
+	background-color: #bbf;
+}
+
+body {
+	text-align: center;
+}
+.credit {
+	margin-top: 1em;
+}
+.credit a {
+	color: gray !important;
+}
+</style>
+
+</head>
+<body>
+
+<day-calendar id=cal></day-calendar>
+<button id=prev>前月</button><button id=now>今月</button><button id=next>来月</button>
+
+<script type="module">
+prev.onclick = () => cal.prevMonth();
+next.onclick = () => cal.nextMonth();
+now.onclick = () => cal.thisMonth();
+</script>
+
+<div class='credit'><a href=https://github.com/taisukef/day-es/>day-es and day-calendar src on GitHub</a></div>
+
+</body>
+</html>
