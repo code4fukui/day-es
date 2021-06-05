@@ -1,0 +1,11 @@
+<meta charset="utf-8"><script type="module">
+onload = async () => {
+  try {
+    const url = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
+    const text = await (await fetch(url)).text();
+    document.body = text;
+  } catch (e) {
+    document.body.textContent = e;
+  }
+};
+</script>
