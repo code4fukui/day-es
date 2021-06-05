@@ -5,11 +5,11 @@
 ## usage
 
 ```js
-import { Day } from "https://code4fukui.github.io/dey-es/Day.js";
+import { Day } from "https://code4fukui.github.io/day-es/Day.js";
 
 const day = new Day(2021, 6, 5); // 2021/6/5
-console.log(day); // 2021-06-06
-console.log(day.afterDay(2)); // 2021-06-08
+console.log(day); // Day { year: 2021, month: 6, day: 5 }
+console.log(day.dayAfter(2)); // Day { year: 2021, month: 6, day: 7 }
 ```
 
 祝日判定
