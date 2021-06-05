@@ -1,6 +1,6 @@
 # day-es
  
-1年から999年までの日付を扱う、ブラウザとDeno用、JavaScript ESモジュールです
+西暦1年から9999年までの日付を扱う、ブラウザとDeno用、JavaScript ESモジュールです
 
 ## usage
 
