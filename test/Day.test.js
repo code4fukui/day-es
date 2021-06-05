@@ -121,3 +121,9 @@ Deno.test("subDay", () => {
   t.assertEquals(new Day("2021-11-07").subDay(new Day("2021-06-05")), 155);
   t.assertEquals(new Day("2021-11-07").subDay(new Day("2021-11-06")), 1);
 });
+Deno.test("immutable", () => {
+  t.assertEquals(new Day("2021-12-02").year, 2021);
+  t.assertThrows(() => new Day("2021-12-02").year = 2000);
+  t.assertThrows(() => new Day("2021-12-02").month = 2);
+  t.assertThrows(() => new Day("2021-12-02").day = 1);
+});

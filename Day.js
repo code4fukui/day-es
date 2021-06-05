@@ -54,6 +54,7 @@ class Day {
 		this.year = year;
 		this.month = month;
 		this.day = day;
+		Object.freeze(this);
 	}
 	toString() {
 		return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" + fix0(this.day, 2);
