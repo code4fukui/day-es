@@ -23,3 +23,4 @@ console.log(isHoliday(new Day("2021-07-22"))); // true
 
 - [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html) 
 - [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html) 
+- [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)
