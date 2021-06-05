@@ -1,21 +1,21 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>国民の祝日リスト - day-es</title>
 
-<script type="module">
-import { getHolidays } from "../Holiday.js";
-
-onload = async () => {
-  const holidays = getHolidays();
-  div.innerHTML = holidays.reverse().map(h => h.title + "(" + h.date + ")").join("<br>");
-};
-</script>
 
 <h1>国民の祝日リスト</h1>
 
 <div id=div></div>
 
+<script type="module">
+import { getHolidays } from "../Holiday.js";
+
+const holidays = getHolidays();
+div.innerHTML = holidays.reverse().map(h => h.title + " (" + h.date + ")").join("<br>");
+</script>
+  
 <hr>
-<a href=https://github.com/taisukef/day-es>day-es src on GitHub</a>
+<a href=https://github.com/taisukef/day-es>day-es src on GitHub</a><br>
+<a href=https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html>国民の祝日について - 内閣府</a><br>
 
 </body>
 </html>
