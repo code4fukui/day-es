@@ -23,4 +23,4 @@ data.forEach(d => {
 console.log(data);
 await Deno.writeTextFile("../holiday_jp.csv", CSV.stringify(data));
 await Deno.writeTextFile("../holiday_jp.json", JSON.stringify(data));
-await Deno.writeTextFile("../holiday_jp.js", `export const HOLIDAY_JP = ${JSON.stringify(data)};\n`);
+await Deno.writeTextFile("../HOLIDAY_JP.js", `export const HOLIDAY_JP = ${JSON.stringify(data)};\n`);
