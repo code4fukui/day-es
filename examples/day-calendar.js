@@ -29,7 +29,7 @@ class Cal extends HTMLElement {
 			this.onbeforedraw();
 		}
 		this.querySelector("h2").textContent = this.day.year + "/" + this.day.month;
-		const caloff = this.day.getFirstDayOfMonth().getWeek();
+		const caloff = this.day.getFirstDayOfMonth().getWeek() % 7;
 		const div = this.querySelector("div");
 		const len = div.childNodes.length;
 		if (this.monthmode) {

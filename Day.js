@@ -59,7 +59,7 @@ class Day {
 	toString() {
 		return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" + fix0(this.day, 2);
 	}
-	// Sunday == 0
+	// Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
 	getWeek() {
 		return DayUtil.getWeek(this.year, this.month, this.day);
 	}
@@ -153,13 +153,17 @@ class Day {
 
 
 class DayUtil {
-	// Sunday == 0
+	// Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
 	static getWeek(year, month, day) {
 		if (month <= 2) {
 			year--;
 			month += 12;
 		}
-		return (year + Math.floor(year / 4) - Math.floor(year / 100) + Math.floor(year / 400) + Math.floor((13 * month + 8) / 5) + day) % 7;
+		const week = (year + Math.floor(year / 4) - Math.floor(year / 100) + Math.floor(year / 400) + Math.floor((13 * month + 8) / 5) + day) % 7;
+		if (week == 0) {
+			return 7;
+		}
+		return week;
 	}
 	// month 1 - 12, month 0 : prev year, month 13 : next year
 	static getLastDayOfMonth(year, month) {

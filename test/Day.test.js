@@ -57,7 +57,8 @@ Deno.test("prevMonth", () => {
 });
 Deno.test("getWeek", () => {
   t.assertEquals(new Day(2021, 6, 5).getWeek(), 6);
-  t.assertEquals(new Day(2021, 6, 6).getWeek(), 0);
+  t.assertEquals(new Day(2021, 6, 6).getWeek(), 7);
+  t.assertEquals(new Day(2021, 6, 21).getWeek(), 1);
 });
 Deno.test("getFirstDayOfMonth", () => {
   t.assertEquals(new Day(2021, 6, 5).getFirstDayOfMonth().toString(), "2021-06-01");
