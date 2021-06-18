@@ -1,7 +1,7 @@
 # day-es
 
 - 西暦1年から9999年までの日付を扱う、ブラウザとDeno用、JavaScript ESモジュールです
-- [行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠しています
+- ベースレジストリ、[行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠しています
 
 ## usage
 
@@ -14,6 +14,7 @@ console.log(day.dayAfter(2)); // Day { year: 2021, month: 6, day: 7 }
 ```
 
 ## 祝日判定
+
 ```js
 import { isHoliday } from "https://code4fukui.github.io/dey-es/Holiday.js";
 
@@ -23,6 +24,7 @@ console.log(isHoliday(new Day("2021-07-22"))); // true
 ## 曜日
 
 [行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠し、日曜日は0ではなく7
+
 ```js
 Deno.test("getWeek", () => {
   t.assertEquals(new Day(2021, 6, 5).getWeek(), 6); // Satarday == 6
@@ -30,10 +32,11 @@ Deno.test("getWeek", () => {
   t.assertEquals(new Day(2021, 6, 21).getWeek(), 1); // Monday == 1
 });
 ```
+
 （% 7 で使用すると従来同様となる）
 
 ## 応用例
 
-- [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html) 
-- [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html) 
+- [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
+- [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html)
 - [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)

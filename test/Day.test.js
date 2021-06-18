@@ -19,20 +19,38 @@ Deno.test("chk", () => {
 });
 
 Deno.test("illegal", () => {
-  t.assertThrows(() => { new Day(2021, 366) });
-  t.assertThrows(() => { new Day(null) });
-  t.assertThrows(() => { new Day(2021, 6, 0) });
-  t.assertThrows(() => { new Day(2021, 13, 1) });
-  t.assertThrows(() => { new Day(2021, 0) });
-  t.assertThrows(() => { new Day("2021-12-42") });
+  t.assertThrows(() => {
+    new Day(2021, 366);
+  });
+  t.assertThrows(() => {
+    new Day(null);
+  });
+  t.assertThrows(() => {
+    new Day(2021, 6, 0);
+  });
+  t.assertThrows(() => {
+    new Day(2021, 13, 1);
+  });
+  t.assertThrows(() => {
+    new Day(2021, 0);
+  });
+  t.assertThrows(() => {
+    new Day("2021-12-42");
+  });
 });
 
 Deno.test("limit", () => {
   t.assertEquals(new Day(1, 1, 1).toString(), "0001-01-01");
   t.assertEquals(new Day(9999, 12, 31).toString(), "9999-12-31");
-  t.assertThrows(() => { new Day(0, 1, 1) });
-  t.assertThrows(() => { new Day(-1, 1, 1) });
-  t.assertThrows(() => { new Day(10000, 1, 1) });
+  t.assertThrows(() => {
+    new Day(0, 1, 1);
+  });
+  t.assertThrows(() => {
+    new Day(-1, 1, 1);
+  });
+  t.assertThrows(() => {
+    new Day(10000, 1, 1);
+  });
 });
 
 Deno.test("nextDay", () => {
@@ -61,12 +79,24 @@ Deno.test("getWeek", () => {
   t.assertEquals(new Day(2021, 6, 21).getWeek(), 1);
 });
 Deno.test("getFirstDayOfMonth", () => {
-  t.assertEquals(new Day(2021, 6, 5).getFirstDayOfMonth().toString(), "2021-06-01");
-  t.assertEquals(new Day(2012, 2, 1).getFirstDayOfMonth().toString(), "2012-02-01");
+  t.assertEquals(
+    new Day(2021, 6, 5).getFirstDayOfMonth().toString(),
+    "2021-06-01",
+  );
+  t.assertEquals(
+    new Day(2012, 2, 1).getFirstDayOfMonth().toString(),
+    "2012-02-01",
+  );
 });
 Deno.test("getLastDayOfMonth", () => {
-  t.assertEquals(new Day(2021, 6, 5).getLastDayOfMonth().toString(), "2021-06-30");
-  t.assertEquals(new Day(2012, 2, 1).getLastDayOfMonth().toString(), "2012-02-29");
+  t.assertEquals(
+    new Day(2021, 6, 5).getLastDayOfMonth().toString(),
+    "2021-06-30",
+  );
+  t.assertEquals(
+    new Day(2012, 2, 1).getLastDayOfMonth().toString(),
+    "2012-02-29",
+  );
 });
 Deno.test("getDayOfYear", () => {
   t.assertEquals(new Day(2021, 1, 1).getDayOfYear(), 1);
@@ -86,9 +116,13 @@ Deno.test("getDayOfGregorian", () => {
 });
 Deno.test("Gregorian", () => {
   t.assertEquals(new Day(1).toString(), "0001-01-01");
-  t.assertThrows(() => { new Day(0); });
+  t.assertThrows(() => {
+    new Day(0);
+  });
   t.assertEquals(new Day(3652059).toString(), "9999-12-31");
-  t.assertThrows(() => { new Day(3652059 + 1); });
+  t.assertThrows(() => {
+    new Day(3652059 + 1);
+  });
   t.assertEquals(new Day(737946).toString(), "2021-06-05");
 });
 Deno.test("string", () => {

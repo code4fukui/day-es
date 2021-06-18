@@ -1,5 +1,5 @@
 import * as t from "https://deno.land/std/testing/asserts.ts";
-import { isHoliday, getHoliday, searchHoliday } from "../Holiday.js";
+import { getHoliday, isHoliday, searchHoliday } from "../Holiday.js";
 
 Deno.test("test", () => {
   t.assert(isHoliday("2021-01-01"));
