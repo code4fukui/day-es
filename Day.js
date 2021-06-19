@@ -40,6 +40,15 @@ class Day {
       month = md[0];
       day = md[1];
     }
+    if (typeof year == "string") {
+      year = parseInt(year, 10);
+    }
+    if (typeof month == "string") {
+      month = parseInt(month, 10);
+    }
+    if (typeof day == "string") {
+      day = parseInt(day, 10);
+    }
     if (year < 1 || year > 9999) {
       throw new Error("year limit 1 to 9999");
     }
@@ -59,12 +68,13 @@ class Day {
     return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" +
       fix0(this.day, 2);
   }
-	equals(day) {
-		if (!(day instanceof Day)) {
-			return false;
-		}
-		return day.year == this.year && day.month == this.month && day.day == this.day;
-	}
+  equals(day) {
+    if (!(day instanceof Day)) {
+      return false;
+    }
+    return day.year == this.year && day.month == this.month &&
+      day.day == this.day;
+  }
   // Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
   getWeek() {
     return DayUtil.getWeek(this.year, this.month, this.day);
@@ -164,9 +174,8 @@ class DayUtil {
       year--;
       month += 12;
     }
-    const week =
-      (year + Math.floor(year / 4) - Math.floor(year / 100) +
-        Math.floor(year / 400) + Math.floor((13 * month + 8) / 5) + day) % 7;
+    const week = (year + Math.floor(year / 4) - Math.floor(year / 100) +
+      Math.floor(year / 400) + Math.floor((13 * month + 8) / 5) + day) % 7;
     if (week == 0) {
       return 7;
     }

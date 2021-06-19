@@ -167,3 +167,6 @@ Deno.test("equals", () => {
   t.assert(new Day("2021-12-02").equals(new Day("2021-12-02")));
   t.assert(!new Day("2021-12-01").equals(new Day("2021-12-02")));
 });
+Deno.test("string", () => {
+  t.assertEquals(new Day("2021", "12", "02"), new Day(2021, 12, 2));
+});
