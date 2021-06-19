@@ -162,3 +162,8 @@ Deno.test("immutable", () => {
   t.assertThrows(() => new Day("2021-12-02").month = 2);
   t.assertThrows(() => new Day("2021-12-02").day = 1);
 });
+Deno.test("equals", () => {
+  t.assertEquals(new Day("2021-12-02"), new Day("2021-12-02"));
+  t.assert(new Day("2021-12-02").equals(new Day("2021-12-02")));
+  t.assert(!new Day("2021-12-01").equals(new Day("2021-12-02")));
+});

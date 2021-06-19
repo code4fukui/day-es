@@ -59,6 +59,12 @@ class Day {
     return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" +
       fix0(this.day, 2);
   }
+	equals(day) {
+		if (!(day instanceof Day)) {
+			return false;
+		}
+		return day.year == this.year && day.month == this.month && day.day == this.day;
+	}
   // Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
   getWeek() {
     return DayUtil.getWeek(this.year, this.month, this.day);
