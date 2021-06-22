@@ -75,6 +75,25 @@ class Day {
     return day.year == this.year && day.month == this.month &&
       day.day == this.day;
   }
+  isBefore(day) {
+    if (!(day instanceof Day)) {
+      return false;
+    }
+    return this.getDayOfGregorian() < day.getDayOfGregorian();
+  }
+  isAfter(day) {
+    if (!(day instanceof Day)) {
+      return false;
+    }
+    return this.getDayOfGregorian() > day.getDayOfGregorian();
+  }
+  includes(startday, endday) {
+    if (!(startday instanceof Day) || !(endday instanceof Day)) {
+      return false;
+    }
+    const days = this.getDayOfGregorian();
+    return days >= startday.getDayOfGregorian() && days <= endday.getDayOfGregorian();
+  }
   // Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
   getWeek() {
     return DayUtil.getWeek(this.year, this.month, this.day);

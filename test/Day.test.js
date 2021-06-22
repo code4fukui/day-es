@@ -170,3 +170,22 @@ Deno.test("equals", () => {
 Deno.test("string", () => {
   t.assertEquals(new Day("2021", "12", "02"), new Day(2021, 12, 2));
 });
+Deno.test("isBefore", () => {
+  t.assertEquals(new Day("2021-12-02").isBefore(new Day("2021-12-01")), false);
+  t.assertEquals(new Day("2021-12-02").isBefore(new Day("2021-12-02")), false);
+  t.assertEquals(new Day("2021-12-02").isBefore(new Day("2021-12-03")), true);
+  t.assertEquals(new Day("2021-12-02").isBefore(new Day("2022-12-01")), true);
+  t.assertEquals(new Day("2021-12-02").isBefore(new Day("2021-11-03")), false);
+});
+Deno.test("isAfter", () => {
+  t.assertEquals(new Day("2021-12-02").isAfter(new Day("2021-12-01")), true);
+  t.assertEquals(new Day("2021-12-02").isAfter(new Day("2021-12-02")), false);
+  t.assertEquals(new Day("2021-12-02").isAfter(new Day("2021-12-03")), false);
+  t.assertEquals(new Day("2022-12-02").isAfter(new Day("2021-12-03")), true);
+});
+Deno.test("includes", () => {
+  t.assertEquals(new Day("2021-12-02").includes(new Day("2021-12-01"), new Day("2021-12-02")), true);
+  t.assertEquals(new Day("2021-11-02").includes(new Day("2021-12-01"), new Day("2021-12-02")), false);
+  t.assertEquals(new Day("2022-11-02").includes(new Day("2021-12-01"), new Day("2021-12-02")), false);
+  t.assertEquals(new Day("2022-12-02").includes(new Day("2021-12-02"), new Day("2100-12-02")), true);
+});
