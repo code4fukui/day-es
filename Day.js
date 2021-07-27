@@ -1,4 +1,5 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
+import { WAREKI_ID, WAREKI_FIRST_YEAR } from "./WAREKI.js";
 
 class Day {
   // new Day(year, month, day)
@@ -41,7 +42,12 @@ class Day {
       day = md[1];
     }
     if (typeof year == "string") {
-      year = parseInt(year, 10);
+      const n = WAREKI_ID.indexOf(year[0]);
+      if (n >= 0) {
+        year = WAREKI_FIRST_YEAR[n] + parseInt(year.substring(1), 10) - 1;
+      } else {
+        year = parseInt(year, 10);
+      }
     }
     if (typeof month == "string") {
       month = parseInt(month, 10);
