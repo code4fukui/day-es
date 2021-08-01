@@ -35,6 +35,14 @@ Deno.test("getWeek", () => {
 
 （% 7 で使用すると従来同様となる）
 
+## 時間
+
+```js
+import { Time } from "https://code4fukui.github.io/dey-es/Time.js";
+
+console.log(new Time("12:34:56").add(60).toString()); // 12:35:56
+```
+
 ## 応用例
 
 - [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
