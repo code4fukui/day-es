@@ -42,6 +42,7 @@ import { Time } from "https://code4fukui.github.io/dey-es/Time.js";
 
 console.log(new Time("12:34:56").add(60).toString()); // 12:35:56
 ```
+toString, toSeconds, minAfter, minBefore, add, sub, mul, div, mod, equals, contains
 
 ## 応用例
 
