@@ -20,12 +20,20 @@ class Day {
         day = ymd[2];
       } else if (typeof year == "string") {
         const n = year.match(/(\d\d\d\d)-(\d\d)-(\d\d)/);
-        if (!n) {
-          throw new Error("illegal date");
+        if (n) {
+          year = parseInt(n[1], 10);
+          month = parseInt(n[2], 10);
+          day = parseInt(n[3], 10);
+        } else {
+          const n2 = year.match(/(\d\d\d\d)(\d\d)(\d\d)/);
+          if (n2) {
+            year = parseInt(n2[1], 10);
+            month = parseInt(n2[2], 10);
+            day = parseInt(n2[3], 10);
+          } else {
+            throw new Error("illegal date");
+          }
         }
-        year = parseInt(n[1], 10);
-        month = parseInt(n[2], 10);
-        day = parseInt(n[3], 10);
       } else {
         const d = year;
         year = d.getFullYear();
