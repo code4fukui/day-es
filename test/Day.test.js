@@ -200,4 +200,7 @@ Deno.test("wareki", () => {
 Deno.test("chk_str", () => {
   t.assertEquals(new Day("20210605").toString(), "2021-06-05");
   t.assertEquals(new Day("20211201").toString(), "2021-12-01");
+  t.assertThrows(() => new Day("2021-1201"));
+  t.assertThrows(() => new Day("202112-01"));
+  t.assertThrows(() => new Day("202112"));
 });
