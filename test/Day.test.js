@@ -204,3 +204,7 @@ Deno.test("chk_str", () => {
   t.assertThrows(() => new Day("202112-01"));
   t.assertThrows(() => new Day("202112"));
 });
+Deno.test("chk_str2", () => {
+  t.assertEquals(new Day("2021/06/05").toString(), "2021-06-05");
+  t.assertEquals(new Day("2021/6/5").toString(), "2021-06-05");
+});

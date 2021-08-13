@@ -31,7 +31,14 @@ class Day {
             month = parseInt(n2[2], 10);
             day = parseInt(n2[3], 10);
           } else {
-            throw new Error("illegal date");
+            const n = year.match(/(\d+)\/(\d+)\/(\d+)/);
+            if (n) {
+              year = parseInt(n[1], 10);
+              month = parseInt(n[2], 10);
+              day = parseInt(n[3], 10);
+            } else {
+              throw new Error("illegal date");
+            }
           }
         }
       } else {
