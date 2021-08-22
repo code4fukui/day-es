@@ -208,3 +208,8 @@ Deno.test("chk_str2", () => {
   t.assertEquals(new Day("2021/06/05").toString(), "2021-06-05");
   t.assertEquals(new Day("2021/6/5").toString(), "2021-06-05");
 });
+Deno.test("toJSON", () => {
+  t.assertEquals(JSON.stringify(new Day("2021/06/05")), '"2021-06-05"');
+  t.assertEquals(new Day(JSON.parse('"2021/06/05"')), new Day("2021/06/05"));
+  t.assertEquals(new Day(JSON.parse('"2021/06/05"')).toString(), new Day("2021/06/05").toString());
+});
