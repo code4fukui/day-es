@@ -1,13 +1,25 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
 
 class Time {
-  constructor(time) {
+  constructor(time, min, sec) {
     if (time == undefined) {
       const d = new Date();
       this.hour = d.getHours();
       this.min = d.getMinutes();
-      this.sec = d.getMinutes();
+      this.sec = d.getSeconds();
       this.msec = d.getMilliseconds();
+    } else if (typeof time == "number" && typeof min == "number" && typeof sec == "number") { // hour, min, sec
+      this.minus = time < 0;
+      time = Math.abs(time);
+      this.hour = time;
+      this.min = min;
+      this.sec = Math.floor(sec);
+      this.msec = Math.floor(sec) == sec ? undefined : Math.floor(sec % 1 * 1000);
+    } else if (typeof time == "number" && typeof min == "number") { // hour, min
+      this.minus = time < 0;
+      time = Math.abs(time);
+      this.hour = time;
+      this.min = min;
     } else if (typeof time == "string") {
       //const n = time.match(/(\d+):(\d+)(:(\d+).(\d))/);
       //const n = time.match(/(\d+):(\d+)(:(\d+))?/);
@@ -37,8 +49,14 @@ class Time {
     const res = (this.hour || 0) * 60 * 60 + (this.min || 0) * 60 + (this.sec || 0) + (this.msec || 0) / 1000;
     return this.minus ? -res : res;
   }
+  getSeconds() { // alias
+    return this.toSeconds();
+  }
   toString() {
     return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + ":" + fix0(this.min || 0, 2) + (this.sec == undefined && this.msec == undefined ? "" : ":" + fix0(this.sec, 2)) + (this.msec == undefined ? "" : "." + fix0(this.msec, 3));
+  }
+  toJSON() {
+    return this.toString();
   }
   minAfter(min) {
     return new Time(this.toSeconds() + min * 60);

@@ -9,7 +9,7 @@ Deno.test("time", () => {
 });
 Deno.test("toSeconds", () => {
   t.assertEquals(new Time("00:00:10").toSeconds(), 10);
-  t.assertEquals(new Time("01:00").toSeconds(), 60 * 60);
+  t.assertEquals(new Time("01:00").toSeconds(), 60 * 60); // 1hour
   t.assertEquals(new Time("01:00:10.123").toSeconds(), 60 * 60 + 10.123);
   t.assertEquals(new Time("-01:00").toSeconds(), -60 * 60);
 });
@@ -65,4 +65,13 @@ Deno.test("equals", () => {
 Deno.test("contains", () => {
   t.assertEquals(new Time("01:00").contains("01:00", "02:00"), true);
   t.assertEquals(new Time("00:59").contains("01:00", "02:00"), false);
+});
+Deno.test("toJSON", () => {
+  t.assertEquals(JSON.stringify(new Time("01:00")), '"01:00"');
+});
+Deno.test("another constructors", () => {
+  t.assertEquals(new Time(7, 9).toString(), "07:09");
+  t.assertEquals(new Time(7, 9, 59).toString(), "07:09:59");
+  t.assertEquals(new Time(7, 9, 59.999).toString(), "07:09:59.999");
+  t.assertEquals(new Time(-7, 9).toString(), "-07:09");
 });
