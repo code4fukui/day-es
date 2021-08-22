@@ -6,6 +6,8 @@
 
 ## usage
 
+### 日付 Day.js
+
 ```js
 import { Day } from "https://code4fukui.github.io/day-es/Day.js";
 
@@ -13,8 +15,11 @@ const day = new Day(2021, 6, 5); // 2021/6/5
 console.log(day); // Day { year: 2021, month: 6, day: 5 }
 console.log(day.dayAfter(2)); // Day { year: 2021, month: 6, day: 7 }
 ```
+toString, nextDay, prevDay, nextMonth, prevMonth, getWeek, getFirstDayOfMonth, getLastDayOfMonth, getDayOfYear, getDayOfGregorian, dayAfter, dayBefore, subDay, equals, isBefore, isAfter, includes
 
-## 祝日判定
+see also [Day.test.js](test/Day.test.js)
+
+#### 祝日判定
 
 ```js
 import { isHoliday } from "https://code4fukui.github.io/dey-es/Holiday.js";
@@ -22,7 +27,7 @@ import { isHoliday } from "https://code4fukui.github.io/dey-es/Holiday.js";
 console.log(isHoliday(new Day("2021-07-22"))); // true
 ```
 
-## 曜日
+#### 曜日
 
 [行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠し、日曜日は0ではなく7
 
@@ -36,7 +41,7 @@ Deno.test("getWeek", () => {
 
 （% 7 で使用すると従来同様となる）
 
-## 時間
+### 時間 Time.js
 
 ```js
 import { Time } from "https://code4fukui.github.io/dey-es/Time.js";
@@ -45,7 +50,9 @@ console.log(new Time("12:34:56").add(60).toString()); // 12:35:56
 ```
 toString, getSeconds, minAfter, minBefore, add, sub, mul, div, mod, equals, contains
 
-## タイムゾーン
+see also [Time.test.js](test/Time.test.js)
+
+### タイムゾーン TimeZone.js
 
 ```js
 import { TimeZone } from "https://code4fukui.github.io/dey-es/TimeZone.js";
@@ -54,7 +61,9 @@ console.log(new TimeZone("09:00").toString()); // +09:00
 ```
 toString, getOffset
 
-## 日時
+see also [TimeZone.test.js](test/TimeZone.test.js)
+
+### 日時 DateTime.js
 
 ```js
 import { DateTime, Day, Time, TimeZone } from "https://code4fukui.github.io/day-es/DateTime.js";
@@ -67,6 +76,8 @@ console.log(dt.getTime()); // 1629622800000
 console.log(dt.getUnixTime()); // 1629622800
 ```
 toString, getOffset
+
+see also [DateTime.test.js](test/DateTime.test.js)
 
 ## テスト
 
