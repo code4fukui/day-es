@@ -56,14 +56,14 @@ toString, getOffset
 ## 日時
 
 ```js
-import { DateTime, Day, Time, TimeZone } from "https://code4fukui.github.io/dey-es/DateTime.js";
+import { DateTime, Day, Time, TimeZone } from "https://code4fukui.github.io/day-es/DateTime.js";
 
-const dt = new DateTime("2021-08-22T18:00+09+00");
+const dt = new DateTime("2021-08-22T18:00+09:00");
 console.log(dt.day.toString()); // 2021-08-22
 console.log(dt.time.toString()); // 18:00
 console.log(dt.timezone.toString()); // +09:00
-console.log(dt.getTime());
-console.log(dt.getUnixTime());
+console.log(dt.getTime()); // 1629622800000
+console.log(dt.getUnixTime()); // 1629622800
 ```
 toString, getOffset
 
