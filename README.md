@@ -1,6 +1,6 @@
 # day-es
 
-- 西暦1年から9999年までの日付を扱う、ブラウザとDeno用、JavaScript ESモジュールです
+- 西暦1年から9999年までの日付と時間とタイムゾーンを扱う、ブラウザとDeno用、JavaScript ESモジュールです
 - ベースレジストリ、[行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠しています
 
 ## usage
@@ -42,7 +42,30 @@ import { Time } from "https://code4fukui.github.io/dey-es/Time.js";
 
 console.log(new Time("12:34:56").add(60).toString()); // 12:35:56
 ```
-toString, toSeconds, minAfter, minBefore, add, sub, mul, div, mod, equals, contains
+toString, getSeconds, minAfter, minBefore, add, sub, mul, div, mod, equals, contains
+
+## タイムゾーン
+
+```js
+import { TimeZone } from "https://code4fukui.github.io/dey-es/TimeZone.js";
+
+console.log(new TimeZone("09:00").toString()); // +09:00
+```
+toString, getOffset
+
+## 日時
+
+```js
+import { DateTime, Day, Time, TimeZone } from "https://code4fukui.github.io/dey-es/DateTime.js";
+
+const dt = new DateTime("2021-08-22T18:00+09+00");
+console.log(dt.day.toString()); // 2021-08-22
+console.log(dt.time.toString()); // 18:00
+console.log(dt.timezone.toString()); // +09:00
+console.log(dt.getTime());
+console.log(dt.getUnixTime());
+```
+toString, getOffset
 
 ## 応用例
 
