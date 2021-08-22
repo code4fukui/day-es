@@ -1,9 +1,10 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
 import { Day } from "../Day.js";
+import { deepEqual } from "https://js.sabae.cc/deepEqual.js";
 
 const url = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const list = await CSV.fetch(url);
-console.log(list);
+//console.log(list);
 
 const header = list[0];
 if (
@@ -23,10 +24,20 @@ data.forEach((d) => {
     .toString();
 });
 
-console.log(data);
+//console.log(data);
+try {
+  const bk = JSON.parse(await Deno.readTextFile("../holiday_jp.json"));
+  if (deepEqual(bk, data)) {
+    console.log("not change");
+    Deno.exit(0);
+  }
+} catch (e) {
+}
+
 await Deno.writeTextFile("../holiday_jp.csv", CSV.stringify(data));
 await Deno.writeTextFile("../holiday_jp.json", JSON.stringify(data));
 await Deno.writeTextFile(
   "../HOLIDAY_JP.js",
   `export const HOLIDAY_JP = ${JSON.stringify(data)};\n`,
 );
+console.log("updated!");
