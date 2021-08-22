@@ -68,6 +68,13 @@ console.log(dt.getUnixTime()); // 1629622800
 ```
 toString, getOffset
 
+## テスト
+
+```js
+$ deno test
+```
+* 秒の変わり目など、タイミングによってエラーが出ます
+
 ## 応用例
 
 - [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
