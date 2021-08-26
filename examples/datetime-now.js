@@ -7,7 +7,6 @@ class DateTimeNow extends HTMLElement {
   connectedCallback() {
     const show = () => {
       this.dt = new DateTime(Math.floor(new DateTime().getTime() / 1000) * 1000);
-      console.log(this.dt)
       this.textContent = this.dt.toString().replace("T", " ");
     };
     show();
