@@ -3,17 +3,28 @@ import { Time } from "./Time.js";
 import { TimeZone } from "./TimeZone.js";
 
 const orgday = new Day("1970-01-01").getDayOfGregorian();
-
 class DateTime {
   constructor(day, time, timezone) {
     if (typeof day == "string" && time == undefined && timezone == undefined) {
-      const n = day.match(/(.+)T(.+)(Z|\+|\-)(.*)/);
+      const n = day.match(/(.+)[T\s]([\d:]+)([Z\+\-])?(.*)/);
       if (!n) {
         throw new Error("unsupported param: " + day);
       }
       this.day = new Day(n[1]);
       this.time = new Time(n[2]);
-      this.timezone = new TimeZone(n[3] + n[4]);
+      console.log(n);
+      if (n[3] != undefined) {
+        this.timezone = new TimeZone(n[3] + n[4]);
+      } else {
+        this.timezone = new TimeZone();
+      }
+    } else if (typeof day == "number" && time == undefined && timezone == undefined) {
+      this.timezone = timezone || new TimeZone();
+      const t = day / 1000 + this.timezone.getOffset() * 60;
+      const nday = Math.floor(t / (24 * 60 * 60));
+      const sec = t % (24 * 60 * 60);
+      this.day = new Day(nday + orgday);
+      this.time = new Time(sec);
     } else {
       this.day = day || new Day();
       this.time = time || new Time();
