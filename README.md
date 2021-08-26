@@ -84,10 +84,10 @@ see also [DateTime.test.js](test/DateTime.test.js)
 ```js
 $ deno test
 ```
-* 秒の変わり目など、タイミングによってエラーが出ます
 
 ## 応用例
 
 - [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
 - [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html)
 - [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)
+- [現在日時表示タグ](https://code4fukui.github.io/day-es/examples/datetime-now.html)
