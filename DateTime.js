@@ -8,15 +8,18 @@ class DateTime {
     if (typeof day == "string" && time == undefined && timezone == undefined) {
       const n = day.match(/(.+)[T\s]([\d:]+)([Z\+\-])?(.*)/);
       if (!n) {
-        throw new Error("unsupported param: " + day);
-      }
-      this.day = new Day(n[1]);
-      this.time = new Time(n[2]);
-      console.log(n);
-      if (n[3] != undefined) {
-        this.timezone = new TimeZone(n[3] + n[4]);
-      } else {
+        //throw new Error("unsupported param: " + day);
+        this.day = new Day(day);
+        this.time = new Time(0);
         this.timezone = new TimeZone();
+      } else {
+        this.day = new Day(n[1]);
+        this.time = new Time(n[2]);
+        if (n[3] != undefined) {
+          this.timezone = new TimeZone(n[3] + n[4]);
+        } else {
+          this.timezone = new TimeZone();
+        }
       }
     } else if (typeof day == "number" && time == undefined && timezone == undefined) {
       this.timezone = timezone || new TimeZone();
