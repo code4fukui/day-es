@@ -34,6 +34,16 @@ class DateTime {
       this.timezone = timezone || new TimeZone();
     }
   }
+  static isDateTime(s) {
+    if (s) {
+      try {
+        new DateTime(s);
+        return true;
+      } catch (e) {
+      }
+    }
+    return false;
+  }
   toString() {
     return this.day.toString() + "T" + this.time.toString() + this.timezone.toString();
   }

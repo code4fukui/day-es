@@ -38,6 +38,14 @@ Deno.test("getTime", async () => {
   t.assertEquals(new DateTime().getUnixTime(), Math.floor(new Date().getTime() / 1000)); // err sometimes
   t.assertEquals(new DateTime().getTime(), new Date().getTime()); // err sometimes
 });
+Deno.test("isDateTime", async () => {
+  await waitExactTime();
+  t.assertEquals(DateTime.isDateTime("2021-08-22"), true);
+  t.assertEquals(DateTime.isDateTime("2021"), false);
+  t.assertEquals(DateTime.isDateTime("2021-08-22T09:00"), true);
+  t.assertEquals(DateTime.isDateTime("2021/08/22"), true);
+  t.assertEquals(DateTime.isDateTime("2021年8月22日"), false);
+});
 /*
 import { sleep } from "https://js.sabae.cc/sleep.js";
 for (;;) {
