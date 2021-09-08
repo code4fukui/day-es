@@ -75,3 +75,10 @@ Deno.test("another constructors", () => {
   t.assertEquals(new Time(7, 9, 59.999).toString(), "07:09:59.999");
   t.assertEquals(new Time(-7, 9).toString(), "-07:09");
 });
+Deno.test("isTime", async () => {
+  t.assertEquals(Time.isTime("09:00"), true);
+  t.assertEquals(Time.isTime("9:00"), true);
+  t.assertEquals(Time.isTime("28:00"), true);
+  t.assertEquals(Time.isTime("1000"), false);
+  t.assertEquals(Time.isTime("xxx"), false);
+});

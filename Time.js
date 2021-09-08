@@ -35,6 +35,8 @@ class Time {
         if (n[7] != undefined) {
           this.msec = parseInt(n[7], 10);
         }
+      } else {
+        throw new Error("can't parse: " + time);
       }
     } else if (typeof time == "number") {
       this.minus = time < 0;
@@ -44,6 +46,16 @@ class Time {
       this.sec = Math.floor(time) % 60;
       this.msec = Math.floor(time) % 60 == time % 60 ? undefined : Math.floor(time % 1 * 1000);
     }
+  }
+  static isTime(s) {
+    if (s) {
+      try {
+        new Time(s);
+        return true;
+      } catch (e) {
+      }
+    }
+    return false;
   }
   toSeconds() {
     const res = (this.hour || 0) * 60 * 60 + (this.min || 0) * 60 + (this.sec || 0) + (this.msec || 0) / 1000;

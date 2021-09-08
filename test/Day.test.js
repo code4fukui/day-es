@@ -213,3 +213,9 @@ Deno.test("toJSON", () => {
   t.assertEquals(new Day(JSON.parse('"2021/06/05"')), new Day("2021/06/05"));
   t.assertEquals(new Day(JSON.parse('"2021/06/05"')).toString(), new Day("2021/06/05").toString());
 });
+Deno.test("isDay", async () => {
+  t.assertEquals(Day.isDay("2021-06-05"), true);
+  t.assertEquals(Day.isDay("2021/06/05"), true);
+  t.assertEquals(Day.isDay("5/5"), false);
+  t.assertEquals(Day.isDay("5"), false);
+});

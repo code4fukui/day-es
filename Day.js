@@ -85,6 +85,16 @@ class Day {
     this.day = day;
     Object.freeze(this);
   }
+  static isDay(s) {
+    if (s) {
+      try {
+        new Day(s);
+        return true;
+      } catch (e) {
+      }
+    }
+    return false;
+  }
   toString() {
     return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" +
       fix0(this.day, 2);
