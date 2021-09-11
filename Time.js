@@ -67,6 +67,9 @@ class Time {
   toString() {
     return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + ":" + fix0(this.min || 0, 2) + (this.sec == undefined && this.msec == undefined ? "" : ":" + fix0(this.sec, 2)) + (this.msec == undefined ? "" : "." + fix0(this.msec, 3));
   }
+  toStringMin() {
+    return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + ":" + fix0(this.min || 0, 2);
+  }
   toJSON() {
     return this.toString();
   }
@@ -108,6 +111,14 @@ class Time {
     endtime = this.toTime(endtime);
     const t = this.toSeconds();
     return t >= starttime.toSeconds() && t <= endtime.toSeconds();
+  }
+  isAfter(time) {
+    time = this.toTime(time);
+    return this.toSeconds() > time.toSeconds();
+  }
+  isBefore(time) {
+    time = this.toTime(time);
+    return this.toSeconds() < time.toSeconds();
   }
 }
 

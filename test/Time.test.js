@@ -82,3 +82,16 @@ Deno.test("isTime", async () => {
   t.assertEquals(Time.isTime("1000"), false);
   t.assertEquals(Time.isTime("xxx"), false);
 });
+Deno.test("toStringMin", async () => {
+  t.assertEquals(new Time(120 * 60).toStringMin(), "02:00");
+});
+Deno.test("isAfter", async () => {
+  t.assertEquals(new Time(9, 0).isAfter(new Time(8, 0)), true);
+  t.assertEquals(new Time(9, 0).isAfter(new Time(9, 0)), false);
+  t.assertEquals(new Time(9, 0).isAfter(new Time(10, 0)), false);
+});
+Deno.test("isBefore", async () => {
+  t.assertEquals(new Time(9, 0).isBefore(new Time(8, 0)), false);
+  t.assertEquals(new Time(9, 0).isBefore(new Time(9, 0)), false);
+  t.assertEquals(new Time(9, 0).isBefore(new Time(10, 0)), true);
+});
