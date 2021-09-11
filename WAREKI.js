@@ -10,4 +10,12 @@ const WAREKI = {
   REIWA: 2019,
 };
 
-export { WAREKI, WAREKI_ID, WAREKI_FIRST_YEAR };
+const WAREKI_JA = {
+  "明治": 1873,
+  "大正": 1912,
+  "昭和": 1926,
+  "平成": 1989,
+  "令和": 2019,
+};
+
+export { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI, WAREKI_JA };

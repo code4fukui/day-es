@@ -17,7 +17,6 @@ Deno.test("chk", () => {
   t.assertEquals(new Day(1).toString(), "0001-01-01");
   t.assertEquals(new Day("2021-06-05").toString(), "2021-06-05");
 });
-
 Deno.test("illegal", () => {
   t.assertThrows(() => {
     new Day(2021, 366);
@@ -218,4 +217,11 @@ Deno.test("isDay", async () => {
   t.assertEquals(Day.isDay("2021/06/05"), true);
   t.assertEquals(Day.isDay("5/5"), false);
   t.assertEquals(Day.isDay("5"), false);
+});
+Deno.test("string_ja", () => {
+  t.assertEquals(new Day("2021年9月11日").toString(), "2021-09-11");
+  t.assertEquals(new Day("2021年 9 月 11日").toString(), "2021-09-11");
+  t.assertEquals(new Day("昭和53年11月8日").toString(), "1978-11-08");
+  t.assertEquals(new Day("昭和 53年 11 月 8日").toString(), "1978-11-08");
+  t.assertEquals(new Day(" 令和 3   年 9 月 11 日  ").toString(), "2021-09-11");
 });

@@ -1,5 +1,5 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
-import { WAREKI_ID, WAREKI_FIRST_YEAR } from "./WAREKI.js";
+import { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI_JA } from "./WAREKI.js";
 
 class Day {
   // new Day(year, month, day)
@@ -19,26 +19,37 @@ class Day {
         month = ymd[1];
         day = ymd[2];
       } else if (typeof year == "string") {
-        const n = year.match(/(\d\d\d\d)-(\d\d)-(\d\d)/);
-        if (n) {
-          year = parseInt(n[1], 10);
-          month = parseInt(n[2], 10);
-          day = parseInt(n[3], 10);
-        } else {
-          const n2 = year.match(/(\d\d\d\d)(\d\d)(\d\d)/);
+        const regs = [
+          /(\d\d\d\d)-(\d\d)-(\d\d)/,
+          /(\d\d\d\d)(\d\d)(\d\d)/,
+          /(\d+)\/(\d+)\/(\d+)/,
+          /(\d\d\d\d)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/,
+        ];
+        let flg = false;
+        for (const reg of regs) {
+          const n = year.match(reg);
+          //console.log(year, reg, n)
+          if (n) {
+            year = parseInt(n[1], 10);
+            month = parseInt(n[2], 10);
+            day = parseInt(n[3], 10);
+            flg = true;
+            break;
+          }
+        }
+        if (!flg) {
+          // todo: add to half
+          const n2 = year.match(/(..)\s*(\d+)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);
           if (n2) {
-            year = parseInt(n2[1], 10);
-            month = parseInt(n2[2], 10);
-            day = parseInt(n2[3], 10);
-          } else {
-            const n = year.match(/(\d+)\/(\d+)\/(\d+)/);
-            if (n) {
-              year = parseInt(n[1], 10);
-              month = parseInt(n[2], 10);
-              day = parseInt(n[3], 10);
-            } else {
+            const wa = WAREKI_JA[n2[1]];
+            if (!wa) {
               throw new Error("illegal date");
             }
+            year = wa + parseInt(n2[2], 10) - 1;
+            month = parseInt(n2[3], 10);
+            day = parseInt(n2[4], 10);
+          } else {
+            throw new Error("illegal date");
           }
         }
       } else {
