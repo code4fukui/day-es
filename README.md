@@ -22,7 +22,7 @@ see also [Day.test.js](test/Day.test.js)
 #### 祝日判定
 
 ```js
-import { isHoliday } from "https://code4fukui.github.io/dey-es/Holiday.js";
+import { isHoliday } from "https://code4fukui.github.io/day-es/Holiday.js";
 
 console.log(isHoliday(new Day("2021-07-22"))); // true
 ```
@@ -44,7 +44,7 @@ Deno.test("getWeek", () => {
 ### 時間 Time.js
 
 ```js
-import { Time } from "https://code4fukui.github.io/dey-es/Time.js";
+import { Time } from "https://code4fukui.github.io/day-es/Time.js";
 
 console.log(new Time("12:34:56").add(60).toString()); // 12:35:56
 ```
@@ -55,7 +55,7 @@ see also [Time.test.js](test/Time.test.js)
 ### タイムゾーン TimeZone.js
 
 ```js
-import { TimeZone } from "https://code4fukui.github.io/dey-es/TimeZone.js";
+import { TimeZone } from "https://code4fukui.github.io/day-es/TimeZone.js";
 
 console.log(new TimeZone("09:00").toString()); // +09:00
 ```
