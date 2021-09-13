@@ -225,3 +225,12 @@ Deno.test("string_ja", () => {
   t.assertEquals(new Day("昭和 53年 11 月 8日").toString(), "1978-11-08");
   t.assertEquals(new Day(" 令和 3   年 9 月 11 日  ").toString(), "2021-09-11");
 });
+Deno.test("week", () => {
+  t.assertEquals(Day.MONDAY, 1);
+  t.assertEquals(Day.TUESDAY, 2);
+  t.assertEquals(Day.WEDNESDAY, 3);
+  t.assertEquals(Day.THURSDAY, 4);
+  t.assertEquals(Day.FRIDAY, 5);
+  t.assertEquals(Day.SATURDAY, 6);
+  t.assertEquals(Day.SUNDAY, 7);
+});

@@ -140,6 +140,13 @@ class Day {
     return days >= startday.getDayOfGregorian() && days <= endday.getDayOfGregorian();
   }
   // Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
+  static MONDAY = 1;
+  static TUESDAY = 2;
+  static WEDNESDAY = 3;
+  static THURSDAY = 4;
+  static FRIDAY = 5;
+  static SATURDAY = 6;
+  static SUNDAY = 7;
   getWeek() {
     return DayUtil.getWeek(this.year, this.month, this.day);
   }
