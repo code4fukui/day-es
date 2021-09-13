@@ -17,3 +17,6 @@ Deno.test("search", () => {
   ];
   t.assertEquals(searchHoliday("スポーツの日"), chk);
 });
+Deno.test("use Day.js", () => {
+  t.assert(isHoliday("令和2年7月23日"));
+});
