@@ -234,3 +234,6 @@ Deno.test("week", () => {
   t.assertEquals(Day.SATURDAY, 6);
   t.assertEquals(Day.SUNDAY, 7);
 });
+Deno.test("toStringYMD", () => {
+  t.assertEquals(new Day("2021-09-14").toStringYMD(), "20210914");
+});

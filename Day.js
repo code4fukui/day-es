@@ -110,6 +110,9 @@ class Day {
     return fix0(this.year, 4) + "-" + fix0(this.month, 2) + "-" +
       fix0(this.day, 2);
   }
+  toStringYMD() {
+    return fix0(this.year, 4) + fix0(this.month, 2) + fix0(this.day, 2);
+  }
   toJSON() {
     return this.toString();
   }
