@@ -44,7 +44,7 @@ Deno.test("isDateTime", async () => {
   t.assertEquals(DateTime.isDateTime("2021"), false);
   t.assertEquals(DateTime.isDateTime("2021-08-22T09:00"), true);
   t.assertEquals(DateTime.isDateTime("2021/08/22"), true);
-  t.assertEquals(DateTime.isDateTime("2021年8月22日"), false);
+  t.assertEquals(DateTime.isDateTime("2021年8月22日"), true);
 });
 /*
 import { sleep } from "https://js.sabae.cc/sleep.js";
