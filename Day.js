@@ -52,7 +52,7 @@ class Day {
             throw new Error("illegal date");
           }
         }
-      } else {
+      } else if (year instanceof Date) {
         const d = year;
         year = d.getFullYear();
         month = d.getMonth() + 1;
@@ -60,6 +60,16 @@ class Day {
         if (isNaN(year) || isNaN(month) || isNaN(day)) {
           throw new Error("illegal date");
         }
+      } else if (year instanceof Day) {
+        const d = year;
+        year = d.year;
+        month = d.month;
+        day = d.day;
+        if (isNaN(year) || isNaN(month) || isNaN(day)) {
+          throw new Error("illegal date");
+        }
+      } else {
+        throw new Error("illegal date");
       }
     }
     if (day === undefined) {
