@@ -47,6 +47,9 @@ class DateTime {
   toString() {
     return this.day.toString() + "T" + this.time.toString() + this.timezone.toString();
   }
+  toStringMin() {
+    return this.day.toString() + " " + this.time.toStringMin();
+  }
   toJSON() {
     return this.toString();
   }
