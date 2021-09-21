@@ -49,10 +49,6 @@ Deno.test("isDateTime", async () => {
 Deno.test("toStringMin", async () => {
   t.assertEquals(new DateTime("2021-08-22T06:05:04.03+09:00").toStringMin(), "2021-08-22 06:05");
 });
-/*
-import { sleep } from "https://js.sabae.cc/sleep.js";
-for (;;) {
-  console.log(new DateTime().toUnixTime());
-  await sleep(1000);
-}
-*/
+Deno.test("toStringRFC2822", () => {
+  t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringRFC2822(), "Wed, 22 Sep 2021 06:05:04 +0900");
+});

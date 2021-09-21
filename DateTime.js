@@ -50,6 +50,14 @@ class DateTime {
   toStringMin() {
     return this.day.toString() + " " + this.time.toStringMin();
   }
+  toStringRFC2822() { // Sat, 7 Jan 2012 00:00:00 +0900
+    const w = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const d = this.day;
+    const t = this.time;
+    const tz = this.timezone.toString().replace(":", "");
+    return w[d.getWeek() - 1] + ", " + d.day + " " + m[d.month - 1] + " " + d.year + " " + t + " " + tz;
+  }
   toJSON() {
     return this.toString();
   }
