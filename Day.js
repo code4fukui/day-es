@@ -249,6 +249,9 @@ class Day {
   subDay(day) {
     return this.getDayOfGregorian() - day.getDayOfGregorian();
   }
+  static isLeapYear(year) {
+    return DayUtil.isLeapYear(year);
+  }
 }
 
 class DayUtil {
