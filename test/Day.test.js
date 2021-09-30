@@ -243,4 +243,6 @@ Deno.test("new Day(Day)", () => {
 Deno.test("isLeapYear", () => {
   t.assert(Day.isLeapYear(2012));
   t.assert(!Day.isLeapYear(2021));
+  t.assertEquals(Day.getLengthOfYear(2012), 366)
+  t.assertEquals(Day.getLengthOfYear(2021), 365)
 });

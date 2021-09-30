@@ -252,6 +252,9 @@ class Day {
   static isLeapYear(year) {
     return DayUtil.isLeapYear(year);
   }
+  static getLengthOfYear(year) {
+    return DayUtil.isLeapYear(year) ? 366 : 365;
+  }
 }
 
 class DayUtil {
