@@ -1,0 +1,72 @@
+running 2 tests from file:///Users/fukuno/data/js/util/day-es/test/TimeZone.test.js
+test timezone ... [0m[32mok[0m [0m[38;5;8m(8ms)[0m
+test timezone offset ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+running 7 tests from file:///Users/fukuno/data/js/util/day-es/test/DateTime.test.js
+test constructor ... [0m[32mok[0m [0m[38;5;8m(645ms)[0m
+test parse ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test now ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test getTime ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test isDateTime ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test toStringMin ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test toStringRFC2822 ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+running 3 tests from file:///Users/fukuno/data/js/util/day-es/test/Holiday.test.js
+test test ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test search ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test use Day.js ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+running 18 tests from file:///Users/fukuno/data/js/util/day-es/test/Time.test.js
+test time ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test toSeconds ... [0m[32mok[0m [0m[38;5;8m(5ms)[0m
+test from sec ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test minAfter ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test minBefore ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test add ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test sub ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test mul ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test div ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test mod ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test equals ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test contains ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test toJSON ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test another constructors ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test isTime ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test toStringMin ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test isAfter ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test isBefore ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+running 34 tests from file:///Users/fukuno/data/js/util/day-es/test/Day.test.js
+test init ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test chk ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test illegal ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test limit ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test nextDay ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test prevDay ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test nextMonth ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test prevMonth ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test getWeek ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test getFirstDayOfMonth ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test getLastDayOfMonth ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test getDayOfYear ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test getDayOfGregorian ... [0m[32mok[0m [0m[38;5;8m(11ms)[0m
+test Gregorian ... [0m[32mok[0m [0m[38;5;8m(8ms)[0m
+test string ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test dayAfter ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test dayBefore ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test subDay ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test immutable ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test equals ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test string ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test isBefore ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test isAfter ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test includes ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test wareki ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test chk_str ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test chk_str2 ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test toJSON ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test isDay ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test string_ja ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test week ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test toStringYMD ... [0m[32mok[0m [0m[38;5;8m(6ms)[0m
+test new Day(Day) ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+test isLeapYear ... [0m[32mok[0m [0m[38;5;8m(7ms)[0m
+
+test result: [0m[32mok[0m. 64 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out [0m[38;5;8m(1189ms)[0m
+

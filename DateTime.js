@@ -50,6 +50,9 @@ class DateTime {
   toStringMin() {
     return this.day.toString() + " " + this.time.toStringMin();
   }
+  toStringMinLog() {
+    return this.day.toStringYMD() + this.time.toStringHM();
+  }
   toStringRFC2822() { // Sat, 7 Jan 2012 00:00:00 +0900
     const w = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

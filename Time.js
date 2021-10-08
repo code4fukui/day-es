@@ -70,6 +70,9 @@ class Time {
   toStringMin() {
     return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + ":" + fix0(this.min || 0, 2);
   }
+  toStringHM() {
+    return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + fix0(this.min || 0, 2);
+  }
   toJSON() {
     return this.toString();
   }
