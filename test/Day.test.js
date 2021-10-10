@@ -246,3 +246,15 @@ Deno.test("isLeapYear", () => {
   t.assertEquals(Day.getLengthOfYear(2012), 366)
   t.assertEquals(Day.getLengthOfYear(2021), 365)
 });
+Deno.test("getWeekJA", () => {
+  t.assertEquals(new Day(2021, 10, 10).getWeekJA(), "日");
+  t.assertEquals(new Day(2021, 10, 11).getWeekJA(), "月");
+});
+Deno.test("toStringJA", () => {
+  t.assertEquals(new Day(2021, 10, 10).toStringJA(), "2021/10/10(日)");
+  t.assertEquals(new Day(2021, 10, 11).toStringJA(), "2021/10/11(月)");
+});
+Deno.test("toStringJALong", () => {
+  t.assertEquals(new Day(2021, 10, 10).toStringJALong(), "2021年10月10日(日)");
+  t.assertEquals(new Day(2021, 10, 11).toStringJALong(), "2021年10月11日(月)");
+});

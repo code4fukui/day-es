@@ -123,6 +123,12 @@ class Day {
   toStringYMD() {
     return fix0(this.year, 4) + fix0(this.month, 2) + fix0(this.day, 2);
   }
+  toStringJA() {
+    return `${this.year}/${this.month}/${this.day}(${this.getWeekJA()})`;
+  }
+  toStringJALong() {
+    return `${this.year}年${this.month}月${this.day}日(${this.getWeekJA()})`;
+  }
   toJSON() {
     return this.toString();
   }
@@ -153,6 +159,7 @@ class Day {
     return days >= startday.getDayOfGregorian() && days <= endday.getDayOfGregorian();
   }
   // Monday == 1, Satarday == 6, Sunday == 7 by ISO 8601 / JIS X 0301
+  static WEEK_JA = "月火水木金土日";
   static MONDAY = 1;
   static TUESDAY = 2;
   static WEDNESDAY = 3;
@@ -162,6 +169,9 @@ class Day {
   static SUNDAY = 7;
   getWeek() {
     return DayUtil.getWeek(this.year, this.month, this.day);
+  }
+  getWeekJA() {
+    return Day.WEEK_JA[this.getWeek() - 1];
   }
   getDayOfYear() {
     let res = 0;
