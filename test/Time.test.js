@@ -5,6 +5,9 @@ Deno.test("time", () => {
   t.assertEquals(new Time("07:09").toString(), "07:09");
   t.assertEquals(new Time("07:09:59").toString(), "07:09:59");
   t.assertEquals(new Time("07:09:59.999").toString(), "07:09:59.999");
+  t.assertEquals(new Time("07:09:59.1").toString(), "07:09:59.100");
+  t.assertEquals(new Time("07:09:59.01").toString(), "07:09:59.010");
+  t.assertEquals(new Time("07:09:59.001").toString(), "07:09:59.001");
   t.assertEquals(new Time("-07:09").toString(), "-07:09");
 });
 Deno.test("toSeconds", () => {

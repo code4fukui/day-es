@@ -33,7 +33,9 @@ class Time {
           this.sec = parseInt(n[5], 10);
         }
         if (n[7] != undefined) {
-          this.msec = parseInt(n[7], 10);
+          const ms0 = n[7] + "000";
+          const ms1 = ms0.substring(0, 3);
+          this.msec = parseInt(ms1, 10);
         }
       } else {
         throw new Error("can't parse: " + time);
