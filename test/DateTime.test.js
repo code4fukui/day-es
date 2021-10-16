@@ -46,12 +46,18 @@ Deno.test("isDateTime", async () => {
   t.assertEquals(DateTime.isDateTime("2021/08/22"), true);
   t.assertEquals(DateTime.isDateTime("2021年8月22日"), true);
 });
+Deno.test("toString", async () => {
+  t.assertEquals(new DateTime("2021-08-22T06:05:04.03+09:00").toString(), "2021-08-22T06:05:04.030+09:00");
+});
 Deno.test("toStringMin", async () => {
   t.assertEquals(new DateTime("2021-08-22T06:05:04.03+09:00").toStringMin(), "2021-08-22 06:05");
 });
 Deno.test("toStringRFC2822", () => {
-  t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringRFC2822(), "Wed, 22 Sep 2021 06:05:04 +0900");
+  t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringRFC2822(), "Wed, 22 Sep 2021 06:05:04.030 +0900");
 });
 Deno.test("toStringMinLog", () => {
   t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringMinLog(), "202109220605");
+});
+Deno.test("toStringLocal", () => {
+  t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringLocal(), "2021-09-22T06:05:04.030");
 });

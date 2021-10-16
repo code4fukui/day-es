@@ -6,7 +6,7 @@ const orgday = new Day("1970-01-01").getDayOfGregorian();
 class DateTime {
   constructor(day, time, timezone) {
     if (typeof day == "string" && time == undefined && timezone == undefined) {
-      const n = day.match(/(.+)[T\s]([\d:]+)([Z\+\-])?(.*)/);
+      const n = day.match(/(.+)[T\s]([\d:.]+)([Z\+\-])?(.*)/);
       if (!n) {
         //throw new Error("unsupported param: " + day);
         this.day = new Day(day);
@@ -46,6 +46,9 @@ class DateTime {
   }
   toString() {
     return this.day.toString() + "T" + this.time.toString() + this.timezone.toString();
+  }
+  toStringLocal() {
+    return this.day.toString() + "T" + this.time.toString();
   }
   toStringMin() {
     return this.day.toString() + " " + this.time.toStringMin();
