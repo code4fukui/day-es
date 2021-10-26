@@ -265,6 +265,15 @@ class Day {
   static getLengthOfYear(year) {
     return DayUtil.isLeapYear(year) ? 366 : 365;
   }
+  static intersects(sday1, eday1, sday2, eday2) {
+    if (sday1.isAfter(sday2)) {
+      [sday1, eday1, sday2, eday2] = [sday2, eday2, sday1, sday2];
+    }
+    if (sday2.isAfter(eday1)) {
+      return false;
+    }
+    return true;
+  }
 }
 
 class DayUtil {
