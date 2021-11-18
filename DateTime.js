@@ -5,7 +5,13 @@ import { TimeZone } from "./TimeZone.js";
 const orgday = new Day("1970-01-01").getDayOfGregorian();
 class DateTime {
   constructor(day, time, timezone) {
-    if (typeof day == "string" && time == undefined && timezone == undefined) {
+    if (day instanceof Date) {
+      const d = day;
+      this.day = new Day(d.getFullYear(), d.getMonth(), d.getDate());
+      this.time = new Time(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
+      const tmin = -d.getTimezoneOffset();
+      this.timezone = new TimeZone(Math.floor(tmin / 60), tmin % 60);
+    } else if (typeof day == "string" && time == undefined && timezone == undefined) {
       const n = day.match(/(.+)[T\s]([\d:.]+)([Z\+\-])?(.*)/);
       if (!n) {
         //throw new Error("unsupported param: " + day);

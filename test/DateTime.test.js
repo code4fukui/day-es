@@ -61,3 +61,7 @@ Deno.test("toStringMinLog", () => {
 Deno.test("toStringLocal", () => {
   t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringLocal(), "2021-09-22T06:05:04.030");
 });
+Deno.test("from Date", async () => {
+  const d = Date.parse('04 Dec 1995 00:12:00 GMT');
+  t.assertEquals(new DateTime(d).toString(), "1995-12-04T09:12:00+09:00");
+});
