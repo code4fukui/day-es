@@ -17,6 +17,8 @@ class TimeZone {
       time = new Time(time, min);
     } else if (typeof time == "number") {
       time = new Time(time, 0);
+    } else if (time instanceof TimeZone) {
+      time = time.time;
     } else if (!(time instanceof Time)) {
       throw new Error("unsupported param");
     }
