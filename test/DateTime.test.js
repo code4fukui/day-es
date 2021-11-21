@@ -62,6 +62,9 @@ Deno.test("toStringLocal", () => {
   t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringLocal(), "2021-09-22T06:05:04.030");
 });
 Deno.test("from Date", async () => {
-  const d = Date.parse('04 Dec 1995 00:12:00 GMT');
+  const d = new Date(Date.parse('04 Dec 1995 00:12:00 GMT'));
+  //console.log(d, d instanceof Date)
   t.assertEquals(new DateTime(d).toString(), "1995-12-04T09:12:00+09:00");
+  const d2 = new Date(Date.parse('2021-01-21T00:39:46.000Z'));
+  t.assertEquals(new DateTime(d2).toString(), "2021-01-21T09:39:46+09:00");
 });

@@ -7,7 +7,7 @@ class DateTime {
   constructor(day, time, timezone) {
     if (day instanceof Date) {
       const d = day;
-      this.day = new Day(d.getFullYear(), d.getMonth(), d.getDate());
+      this.day = new Day(d.getFullYear(), d.getMonth() + 1, d.getDate());
       this.time = new Time(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
       const tmin = -d.getTimezoneOffset();
       this.timezone = new TimeZone(Math.floor(tmin / 60), tmin % 60);

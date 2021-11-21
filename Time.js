@@ -48,6 +48,11 @@ class Time {
       this.sec = Math.floor(time) % 60;
       this.msec = Math.floor(time) % 60 == time % 60 ? undefined : Math.floor(time % 1 * 1000);
     }
+    if (this.min >= 60) {
+      const h = this.min / 60;
+      this.hour += h;
+      this.min = this.min % 60;
+    }
   }
   static isTime(s) {
     if (s) {
