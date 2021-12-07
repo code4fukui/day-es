@@ -71,6 +71,10 @@ class Time {
   getSeconds() { // alias
     return this.toSeconds();
   }
+  toMinutes() {
+    const res = (this.hour || 0) * 60 + (this.min || 0) + ((this.sec || 0) + (this.msec || 0) / 1000) / 60;
+    return this.minus ? -res : res;
+  }
   toString() {
     return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + ":" + fix0(this.min || 0, 2) + (this.sec == undefined && this.msec == undefined ? "" : ":" + fix0(this.sec, 2)) + (this.msec == undefined ? "" : "." + fix0(this.msec, 3));
   }

@@ -54,7 +54,8 @@ class DateTime {
     return this.day.toString() + "T" + this.time.toString() + this.timezone.toString();
   }
   toStringLocal() {
-    return this.day.toString() + "T" + this.time.toString();
+    const dt = this.toLocal();
+    return dt.day.toString() + "T" + dt.time.toString();
   }
   toStringMin() {
     return this.day.toString() + " " + this.time.toStringMin();
@@ -84,6 +85,21 @@ class DateTime {
     const s = this.time.toSeconds();
     const off = this.timezone.getOffset();
     return 1000 * (d * (24 * 60 * 60) + s - off * 60);
+  }
+  toLocal() {
+    const localtz = new TimeZone();
+    const dm = this.timezone.getOffset() - localtz.getOffset();
+    const newtime = this.time.sub(dm * 60);
+    if (newtime.minus) {
+      const newtime2 = newtime.add(24 * 60 * 60);
+      const newday = this.day.dayBefore(1);
+      return new DateTime(newday, newtime2, localtz);
+    } else if (newtime.toMinutes() > 24 * 60) {
+      const newtime2 = newtime.sub(24 * 60 * 60);
+      const newday = this.day.dayAfter(1);
+      return new DateTime(newday, newtime2, localtz);
+    }
+    return new DateTime(this.day, newtime, localtz);
   }
 }
 

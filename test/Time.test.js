@@ -15,6 +15,7 @@ Deno.test("toSeconds", () => {
   t.assertEquals(new Time("01:00").toSeconds(), 60 * 60); // 1hour
   t.assertEquals(new Time("01:00:10.123").toSeconds(), 60 * 60 + 10.123);
   t.assertEquals(new Time("-01:00").toSeconds(), -60 * 60);
+  t.assertEquals(new Time("-01:00").getSeconds(), -60 * 60); // alias
 });
 Deno.test("from sec", () => {
   t.assertEquals(new Time(10).toString(), "00:00:10");
@@ -97,4 +98,24 @@ Deno.test("isBefore", async () => {
   t.assertEquals(new Time(9, 0).isBefore(new Time(8, 0)), false);
   t.assertEquals(new Time(9, 0).isBefore(new Time(9, 0)), false);
   t.assertEquals(new Time(9, 0).isBefore(new Time(10, 0)), true);
+});
+Deno.test("null", () => {
+  t.assertEquals(new Time().toString().length, "13:52:38.133".length);
+});
+Deno.test("over 60 min", () => {
+  t.assertEquals(new Time(1, 2, 3).toString(), "01:02:03");
+});
+Deno.test("toStringHM", () => {
+  t.assertEquals(new Time("01:02:10").toStringHM(), "0102");
+});
+Deno.test("toStringHM", () => {
+  t.assertEquals(new Time("01:59").toStringHM(), "0159");
+  t.assertEquals(new Time("02:00").toStringHM(), "0200");
+  t.assertEquals(new Time("01:60").toStringHM(), "0200");
+  //t.assertEquals(new Time("01:80").toStringHM(), "0220"); // err??
+});
+Deno.test("toMinutes", () => {
+  t.assertEquals(new Time("01:59").toMinutes(), 1 * 60 + 59);
+  t.assertEquals(new Time("02:00").toMinutes(), 2 * 60);
+  t.assertEquals(new Time("01:00:30").toMinutes(), 1 * 60 + .5);
 });
