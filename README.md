@@ -5,6 +5,14 @@
 - [ISO 8601](https://ja.wikipedia.org/wiki/ISO_8601)、ベースレジストリ、[行政基本情報データ連携モデル 日付及び時刻](https://github.com/code4fukui/BaseRegistry/blob/main/%E8%A1%8C%E6%94%BF%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%83%A2%E3%83%87%E3%83%AB-%E6%97%A5%E4%BB%98%E5%8F%8A%E3%81%B3%E6%99%82%E5%88%BB.md)に準拠しています
 - 「[国民の祝日について - 内閣府](https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html)」を使った祝日判定に対応しています（毎日更新チェックしています）
 
+## 応用例
+
+- [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
+- [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html)
+- [カウントアップ](https://code4fukui.github.io/day-es/examples/countup.html)
+- [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)
+- [現在日時表示タグ](https://code4fukui.github.io/day-es/examples/datetime-now.html)
+
 ## usage
 
 ### 日付 Day.js
@@ -88,9 +96,3 @@ see also [DateTime.test.js](test/DateTime.test.js)
 $ deno test
 ```
 
-## 応用例
-
-- [カレンダー](https://code4fukui.github.io/day-es/examples/calendar.html)
-- [カウントダウン](https://code4fukui.github.io/day-es/examples/countdown.html)
-- [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)
-- [現在日時表示タグ](https://code4fukui.github.io/day-es/examples/datetime-now.html)
