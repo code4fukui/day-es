@@ -126,4 +126,5 @@ Deno.test("hms", () => {
   t.assertEquals(new Time("9m").toString(), "00:09");
   t.assertEquals(new Time("59s").toString(), "00:00:59");
   t.assertEquals(new Time("59.5s").toString(), "00:00:59.500");
+  t.assertEquals(new Time("2629s").toString(), "00:43:49");
 });

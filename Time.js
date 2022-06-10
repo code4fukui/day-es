@@ -51,6 +51,25 @@ class Time {
             const ms1 = ms0.substring(0, 3);
             this.msec = parseInt(ms1, 10);
           }
+          // normalize
+          if (this.msec >= 1000) {
+            this.sec += Math.floor(this.msec / 1000);
+            this.msec = this.msec % 1000;
+          }
+          if (this.sec >= 60) {
+            if (!this.min) {
+              this.min = 0;
+            }
+            this.min += Math.floor(this.sec / 60);
+            this.sec %= 60;
+          }
+          if (this.min >= 60) {
+            if (!this.hour) {
+              this.hour = 0;
+            }
+            this.hour += Math.floor(this.min / 60);
+            this.min = this.min % 60;
+          }
         } else {
           throw new Error("can't parse: " + time);
         }
