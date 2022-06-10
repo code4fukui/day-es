@@ -38,7 +38,22 @@ class Time {
           this.msec = parseInt(ms1, 10);
         }
       } else {
-        throw new Error("can't parse: " + time);
+        const n = time.match(/^(-)?((\d+)h)?((\d+)m)?((\d+)(.(\d+))?s)?$/);
+        if (n) {
+          this.minus = n[1] == "-";
+          this.hour = parseInt(n[3], 10);
+          this.min = parseInt(n[5], 10);
+          if (n[6] != undefined) {
+            this.sec = parseInt(n[7], 10);
+          }
+          if (n[8] != undefined) {
+            const ms0 = n[9] + "000";
+            const ms1 = ms0.substring(0, 3);
+            this.msec = parseInt(ms1, 10);
+          }
+        } else {
+          throw new Error("can't parse: " + time);
+        }
       }
     } else if (typeof time == "number") {
       this.minus = time < 0;

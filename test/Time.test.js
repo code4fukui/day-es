@@ -119,3 +119,11 @@ Deno.test("toMinutes", () => {
   t.assertEquals(new Time("02:00").toMinutes(), 2 * 60);
   t.assertEquals(new Time("01:00:30").toMinutes(), 1 * 60 + .5);
 });
+Deno.test("hms", () => {
+  t.assertEquals(new Time("7h9m59s").toString(), "07:09:59");
+  t.assertEquals(new Time("7h").toString(), "07:00");
+  t.assertEquals(new Time("9m59s").toString(), "00:09:59");
+  t.assertEquals(new Time("9m").toString(), "00:09");
+  t.assertEquals(new Time("59s").toString(), "00:00:59");
+  t.assertEquals(new Time("59.5s").toString(), "00:00:59.500");
+});
