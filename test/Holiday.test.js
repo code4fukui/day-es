@@ -14,6 +14,7 @@ Deno.test("search", () => {
     "2020-07-24",
     "2021-07-23",
     "2022-10-10",
+    "2023-10-09",
   ];
   t.assertEquals(searchHoliday("スポーツの日"), chk);
 });
