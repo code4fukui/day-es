@@ -258,6 +258,10 @@ Deno.test("toStringJALong", () => {
   t.assertEquals(new Day(2021, 10, 10).toStringJALong(), "2021年10月10日(日)");
   t.assertEquals(new Day(2021, 10, 11).toStringJALong(), "2021年10月11日(月)");
 });
+Deno.test("toStringWareki", () => {
+  t.assertEquals(new Day(2021, 10, 10).toStringWareki(), "令和3年10月10日");
+  t.assertEquals(new Day(2021, 10, 11).toStringWareki(), "令和3年10月11日");
+});
 Deno.test("intersects", () => {
   t.assertEquals(Day.intersects(new Day("2021-01-01"), new Day("2021-12-31"), new Day("2021-03-03"), new Day("2021-03-04")), true);
   t.assertEquals(Day.intersects(new Day("2021-01-01"), new Day("2021-12-31"), new Day("2022-03-03"), new Day("2022-03-04")), false);

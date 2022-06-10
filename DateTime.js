@@ -86,8 +86,10 @@ class DateTime {
     const off = this.timezone.getOffset();
     return 1000 * (d * (24 * 60 * 60) + s - off * 60);
   }
-  toLocal() {
-    const localtz = new TimeZone();
+  toLocal(localtz) {
+    if (!localtz) {
+      localtz = new TimeZone();
+    }
     const dm = this.timezone.getOffset() - localtz.getOffset();
     const newtime = this.time.sub(dm * 60);
     if (newtime.minus) {

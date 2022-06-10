@@ -99,3 +99,7 @@ Deno.test("toStringLocal", () => {
   t.assertEquals(new DateTime("2021-09-22T23:01:02+00:00").toStringLocal(), "2021-09-23T08:01:02");
   t.assertEquals(new DateTime("2021-09-22T00:01:02+10:00").toStringLocal(), "2021-09-21T23:01:02");
 });
+Deno.test("toLocal", () => {
+  t.assertEquals(new DateTime("2021-09-22T11:05:04+00:00").toLocal(new TimeZone(9, 0)).toString(), "2021-09-22T20:05:04+09:00");
+  t.assertEquals(new DateTime("2021-09-22T03:05:04+00:00").toLocal(new TimeZone(9, 0)).toString(), "2021-09-22T12:05:04+09:00");
+});

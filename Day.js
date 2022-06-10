@@ -1,5 +1,5 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
-import { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI_JA } from "./WAREKI.js";
+import { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI_JA, year2wareki } from "./WAREKI.js";
 
 class Day {
   // new Day(year, month, day)
@@ -128,6 +128,9 @@ class Day {
   }
   toStringJALong() {
     return `${this.year}年${this.month}月${this.day}日(${this.getWeekJA()})`;
+  }
+  toStringWareki() {
+    return `${year2wareki(this.year)}${this.month}月${this.day}日`;
   }
   toJSON() {
     return this.toString();
