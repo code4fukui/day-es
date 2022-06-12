@@ -1,6 +1,11 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
 import { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI_JA, year2wareki } from "./WAREKI.js";
 
+const toHankaku = (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0);
+
+const toHalfNum = (s) => s.replace(/[０-９]/g, toHankaku);
+//return s.replace(/[Ａ-Ｚａ-ｚ０-９]/g, toHankaku);
+
 class Day {
   // new Day(year, month, day)
   // new Day(year, dayofyear)
@@ -38,14 +43,15 @@ class Day {
           }
         }
         if (!flg) {
-          // todo: add to half
-          const n2 = year.match(/(..)\s*(\d+)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);
+          year = toHalfNum(year);
+          const n2 = year.match(/(..)\s*(\d+|元)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);
           if (n2) {
             const wa = WAREKI_JA[n2[1]];
             if (!wa) {
               throw new Error("illegal date");
             }
-            year = wa + parseInt(n2[2], 10) - 1;
+            const y = n2[2] == "元" ? 1 : n2[2];
+            year = wa + parseInt(y, 10) - 1;
             month = parseInt(n2[3], 10);
             day = parseInt(n2[4], 10);
           } else {

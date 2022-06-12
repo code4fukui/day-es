@@ -224,6 +224,8 @@ Deno.test("string_ja", () => {
   t.assertEquals(new Day("昭和53年11月8日").toString(), "1978-11-08");
   t.assertEquals(new Day("昭和 53年 11 月 8日").toString(), "1978-11-08");
   t.assertEquals(new Day(" 令和 3   年 9 月 11 日  ").toString(), "2021-09-11");
+  t.assertEquals(new Day("令和元年 9 月 11 日  ").toString(), "2019-09-11"); // 元年
+  t.assertEquals(new Day("令和元年９月１１日  ").toString(), "2019-09-11"); // 全角
 });
 Deno.test("week", () => {
   t.assertEquals(Day.MONDAY, 1);
@@ -261,6 +263,7 @@ Deno.test("toStringJALong", () => {
 Deno.test("toStringWareki", () => {
   t.assertEquals(new Day(2021, 10, 10).toStringWareki(), "令和3年10月10日");
   t.assertEquals(new Day(2021, 10, 11).toStringWareki(), "令和3年10月11日");
+  t.assertEquals(new Day(2019, 10, 11).toStringWareki(), "令和1年10月11日");
 });
 Deno.test("intersects", () => {
   t.assertEquals(Day.intersects(new Day("2021-01-01"), new Day("2021-12-31"), new Day("2021-03-03"), new Day("2021-03-04")), true);
