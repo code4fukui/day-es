@@ -128,3 +128,6 @@ Deno.test("hms", () => {
   t.assertEquals(new Time("59.5s").toString(), "00:00:59.500");
   t.assertEquals(new Time("2629s").toString(), "00:43:49");
 });
+Deno.test("quantizeSeconds", () => {
+  t.assertEquals(new Time("07:09:59.999").quantizeSeconds().toString(), "07:09:59");
+});

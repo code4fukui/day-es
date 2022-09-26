@@ -168,6 +168,9 @@ class Time {
     time = this.toTime(time);
     return this.toSeconds() < time.toSeconds();
   }
+  quantizeSeconds() {
+    return new Time(this.hour, this.min, Math.floor(this.sec));
+  }
 }
 
 export { Time };
