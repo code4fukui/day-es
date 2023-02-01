@@ -2,7 +2,7 @@ import { CSV } from "https://js.sabae.cc/CSV.js";
 import { Day } from "../Day.js";
 import { deepEqual } from "https://js.sabae.cc/deepEqual.js";
 
-const url = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
+const url = "https://www8.cao.go.jp/chosei/shukujitsu/shukujitsu.csv";
 const list = await CSV.fetch(url);
 //console.log(list);
 
