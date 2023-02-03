@@ -96,6 +96,6 @@ see also [DateTime.test.js](test/DateTime.test.js)
 ## テスト
 
 ```js
-$ deno test
+$ deno test --allow-net=code4fukui.github.io
 ```
 
