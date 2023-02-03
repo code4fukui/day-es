@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>test of day-es</title>
+
+<script type="module">
+import { getLastHoliday } from "../Holiday.js";
+import { Day } from "../Day.js";
+
+const h = getLastHoliday();
+holiday.textContent = `${h.title}(${h.date})`;
+const nday = new Day(h.date).subDay(new Day());
+countdown.textContent = nday;
+</script>
+
+<h1>最後の祝日</h1>
+
+登録されている最後の祝日「<span id=holiday></span>」まで、あと<span id=countdown></span>日！
+
+<hr>
+<a href="https://github.com/code4fukui/day-es/">day-es src on GitHub</a>
+
+<style>
+body {
+  text-align: center;
+  font-family: sans-serif;
+  margin: 3em;
+  font-size: 130%;
+}
+hr {
+  margin-top: 3em;
+}
+a {
+  color: gray !important;
+}
+</style>
+
+</body>
+</html>

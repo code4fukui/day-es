@@ -13,6 +13,8 @@
 - [カウントアップ](https://code4fukui.github.io/day-es/examples/countup.html)
 - [国民の祝日リスト](https://code4fukui.github.io/day-es/examples/syukujitsu-list.html)
 - [現在日時表示タグ](https://code4fukui.github.io/day-es/examples/datetime-now.html)
+- [次の祝日](https://code4fukui.github.io/day-es/examples/nextholiday.html)
+- [最後の祝日](https://code4fukui.github.io/day-es/examples/lasthosiday.html)
 
 ## usage
 
