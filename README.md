@@ -31,7 +31,7 @@ toString, nextDay, prevDay, nextMonth, prevMonth, getWeek, getFirstDayOfMonth, g
 
 see also [Day.test.js](test/Day.test.js)
 
-#### 祝日判定
+#### 祝日判定 Holiday.js
 
 「[国民の祝日について - 内閣府](https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html)」を使った祝日判定に対応しています（毎日更新チェックしています）
 
