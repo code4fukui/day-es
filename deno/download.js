@@ -2,7 +2,7 @@ import { CSV } from "https://js.sabae.cc/CSV.js";
 import { Day } from "../Day.js";
 import { deepEqual } from "https://js.sabae.cc/deepEqual.js";
 
-const url = "https://www8.cao.go.jp/chosei/shukujitsu/shukujitsu.csv";
+const url = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const list = await CSV.fetch(url);
 //console.log(list);
 
@@ -35,9 +35,9 @@ try {
 }
 
 await Deno.writeTextFile("../holiday_jp.csv", CSV.stringify(data));
-await Deno.writeTextFile("../holiday_jp.json", JSON.stringify(data));
+await Deno.writeTextFile("../holiday_jp.json", JSON.stringify(data, null, 2));
 await Deno.writeTextFile(
   "../HOLIDAY_JP.js",
-  `export const HOLIDAY_JP = ${JSON.stringify(data)};\n`,
+  `export const HOLIDAY_JP = ${JSON.stringify(data, null, 2)};\n`,
 );
 console.log("updated!");
