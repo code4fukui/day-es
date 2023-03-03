@@ -129,6 +129,9 @@ class Day {
   toStringYMD() {
     return fix0(this.year, 4) + fix0(this.month, 2) + fix0(this.day, 2);
   }
+  toStringYM() {
+    return fix0(this.year, 4) + fix0(this.month, 2);
+  }
   toStringJA() {
     return `${this.year}/${this.month}/${this.day}(${this.getWeekJA()})`;
   }
