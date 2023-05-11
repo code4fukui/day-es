@@ -192,6 +192,13 @@ class Day {
     }
     return res + this.day;
   }
+  getFiscalYear() {
+    const m = this.month;
+    if (m >= 1 && m <= 3) {
+      return this.year - 1;
+    }
+    return this.year;
+  }
   getDayOfGregorian() {
     let res = 0;
     for (let i = 1; i < this.year; i++) {

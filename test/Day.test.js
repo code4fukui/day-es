@@ -275,3 +275,11 @@ Deno.test("intersects", () => {
   t.assertEquals(Day.intersects(new Day("2021-01-01"), new Day("2021-12-31"), new Day("2000-01-03"), new Day("2000-03-04")), false);
   t.assertEquals(Day.intersects(new Day("2021-01-01"), new Day("2021-12-31"), new Day("2000-01-03"), new Day("2021-01-01")), true);
 });
+Deno.test("getFiscalYear", () => {
+  t.assertEquals(new Day(2022, 3, 30).getFiscalYear(), 2021);
+  t.assertEquals(new Day(2022, 4, 1).getFiscalYear(), 2022);
+  t.assertEquals(new Day(2022, 12, 1).getFiscalYear(), 2022);
+  t.assertEquals(new Day(2023, 1, 1).getFiscalYear(), 2022);
+  t.assertEquals(new Day(2023, 3, 30).getFiscalYear(), 2022);
+  t.assertEquals(new Day(2023, 4, 1).getFiscalYear(), 2023);
+});
