@@ -15,6 +15,7 @@
 - [現在日時表示タグ](https://code4fukui.github.io/day-es/examples/datetime-now.html)
 - [次の祝日](https://code4fukui.github.io/day-es/examples/nextholiday.html)
 - [最後の祝日](https://code4fukui.github.io/day-es/examples/lastholiday.html)
+- [和暦から西暦へまとめて変換](https://code4fukui.github.io/day-es/examples/wareki2seireki.html)
 
 ## usage
 

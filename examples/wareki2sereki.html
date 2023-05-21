@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>wareki2seireki - 和暦から西暦まとめて変換</title>
+</head><body>
+<h1>wareki2seireki - 和暦から西暦まとめて変換</h1>
+<textarea id=tawa></textarea>
+<textarea id=tase></textarea>
+<script type="module">
+import { WAREKI_ID_JA, wareki2year } from "../WAREKI.js";
+
+tawa.onchange = () => {
+  let s = tawa.value;
+  for (const wa of WAREKI_ID_JA) {
+    for (;;) {
+      const n = s.match(new RegExp(`(${wa}(\\d+|元)年)`));
+      console.log(n)
+      if (n) {
+        const m = s.indexOf("年", n.index);
+        const se = (n[2] == "元" ? wareki2year(wa + "1年") : wareki2year(n[0])) + "年";
+        s = s.substring(0, n.index) + se + s.substring(n.index + n[0].length);
+      } else {
+        break;
+      }
+    }
+  }
+  tase.value = s;
+};
+</script>
+
+<style>
+textarea {
+  width: 90vw;
+  height: 15em;
+}
+</style>
+
+<hr>
+<a href=https://github.com/code4fukui/day-es/>src on GitHub</a>

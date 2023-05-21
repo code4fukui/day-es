@@ -37,4 +37,4 @@ const year2wareki = (year) => {
   throw "unsupported wareki year";
 };
 
-export { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI, WAREKI_JA, wareki2year, year2wareki };
+export { WAREKI_ID, WAREKI_ID_JA, WAREKI_FIRST_YEAR, WAREKI, WAREKI_JA, wareki2year, year2wareki };
