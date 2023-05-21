@@ -12,7 +12,6 @@ tawa.onchange = () => {
   for (const wa of WAREKI_ID_JA) {
     for (;;) {
       const n = s.match(new RegExp(`(${wa}(\\d+|元)年)`));
-      console.log(n)
       if (n) {
         const m = s.indexOf("年", n.index);
         const se = (n[2] == "元" ? wareki2year(wa + "1年") : wareki2year(n[0])) + "年";
