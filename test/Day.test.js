@@ -189,7 +189,7 @@ Deno.test("includes", () => {
   t.assertEquals(new Day("2022-12-02").includes(new Day("2021-12-02"), new Day("2100-12-02")), true);
 });
 Deno.test("wareki", () => {
-  t.assertEquals(new Day("M1", 6, 5).toString(), "1873-06-05");
+  t.assertEquals(new Day("M1", 6, 5).toString(), "1868-06-05");
   t.assertEquals(new Day("T1", 6, 5).toString(), "1912-06-05");
   t.assertEquals(new Day("S53", 365).toString(), "1978-12-31");
   t.assertEquals(new Day("H1", 6, 5).toString(), "1989-06-05");
