@@ -33,6 +33,8 @@ class TimeZone {
   getOffset() {
     return this.time.toSeconds() / 60;
   }
+  static JST = new TimeZone(9, 0);
+  static UTC = new TimeZone(0, 0);
 }
 
 export { TimeZone };

@@ -18,3 +18,7 @@ Deno.test("timezone offset", () => {
 Deno.test("toJSON", () => {
   t.assertEquals(new TimeZone("07:00").toJSON(), "+07:00");
 });
+Deno.test("preset", () => {
+  t.assertEquals(new TimeZone("+09:00"), TimeZone.JST);
+  t.assertEquals(new TimeZone("+00:00"), TimeZone.UTC);
+});
