@@ -76,6 +76,14 @@ console.log(new TimeZone("09:00").toString()); // +09:00
 ```
 toString, getOffset
 
+どの国にあるサーバー上でも日本時間で昨日を表示
+```js
+import { TimeZone } from "https://code4fukui.github.io/day-es/TimeZone.js";
+import { DateTime } from "https://code4fukui.github.io/day-es/DateTime.js";
+
+console.log(new DateTime().toLocal(TimeZone.JST).day.dayBefore(1));
+```
+
 see also [TimeZone.test.js](test/TimeZone.test.js)
 
 ### 日時 DateTime.js
