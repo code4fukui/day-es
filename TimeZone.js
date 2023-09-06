@@ -3,7 +3,7 @@ import { Time } from "./Time.js";
 class TimeZone {
   constructor(time, min) {
     if (time == undefined) {
-      const offset = -(new Date().getTimezoneOffset());
+      const offset = TimeZone.getOffsetLocal();
       const hour = Math.floor(offset / 60);
       const min = Math.abs(offset) % 60;
       time = new Time(hour, min);
@@ -30,8 +30,11 @@ class TimeZone {
   toJSON() {
     return this.toString();
   }
-  getOffset() {
+  getOffset() { // min
     return this.time.toSeconds() / 60;
+  }
+  static getOffsetLocal() { // min
+    return -new Date().getTimezoneOffset();
   }
   static JST = new TimeZone(9, 0);
   static UTC = new TimeZone(0, 0);
