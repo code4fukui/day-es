@@ -79,9 +79,11 @@ toString, getOffset
 どの国にあるサーバー上でも日本時間で昨日を表示
 ```js
 import { TimeZone } from "https://code4fukui.github.io/day-es/TimeZone.js";
-import { DateTime } from "https://code4fukui.github.io/day-es/DateTime.js";
+import { Day } from "https://code4fukui.github.io/day-es/Day.js";
 
-console.log(new DateTime().toLocal(TimeZone.JST).day.dayBefore(1));
+console.log(new Day(TimeZone.JST).dayBefore(1));
+
+// console.log(new DateTime().toLocal(TimeZone.JST).day.dayBefore(1)); // same
 ```
 
 see also [TimeZone.test.js](test/TimeZone.test.js)

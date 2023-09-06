@@ -110,3 +110,10 @@ Deno.test("timezone", () => {
   t.assertEquals(new DateTime(time).toLocal(TimeZone.JST).toString(), "2023-06-23T06:20:51.081+09:00");
   t.assertEquals(new DateTime(time).toLocal(TimeZone.UTC).toString(), "2023-06-22T21:20:51.081+00:00");
 });
+Deno.test("timezone2", () => {
+  t.assertEquals(new DateTime().toLocal(TimeZone.JST).day, new Day(TimeZone.JST));
+  for (let i = -24; i <= 24; i++) {
+    const tz = new TimeZone(i);
+    t.assertEquals(new DateTime().toLocal(tz).day, new Day(tz));
+  }
+});
