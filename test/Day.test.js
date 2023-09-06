@@ -1,5 +1,6 @@
 import * as t from "https://deno.land/std/testing/asserts.ts";
 import { Day } from "../Day.js";
+import { TimeZone } from "../TimeZone.js";
 
 Deno.test("init", () => {
   new Day(2021, 6, 5);
@@ -282,4 +283,9 @@ Deno.test("getFiscalYear", () => {
   t.assertEquals(new Day(2023, 1, 1).getFiscalYear(), 2022);
   t.assertEquals(new Day(2023, 3, 30).getFiscalYear(), 2022);
   t.assertEquals(new Day(2023, 4, 1).getFiscalYear(), 2023);
+});
+Deno.test("constructor with TimeZone", () => {
+  t.assertEquals(new Day(TimeZone.JST), new Day());
+  t.assertEquals(new Day(new TimeZone(9 + 24)), new Day().dayAfter(1));
+  t.assertEquals(new Day(new TimeZone(9 - 24)), new Day().dayBefore(1));
 });

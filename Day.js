@@ -1,5 +1,6 @@
 import { fix0 } from "https://js.sabae.cc/fix0.js";
 import { WAREKI_ID, WAREKI_FIRST_YEAR, WAREKI_JA, year2wareki } from "./WAREKI.js";
+import { TimeZone } from "./TimeZone.js";
 
 const toHankaku = (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0);
 
@@ -10,6 +11,7 @@ class Day {
   // new Day(year, month, day)
   // new Day(year, dayofyear)
   // new Day() // today in localtime
+  // new Day(TimeZone) // today in the timezone
   // new Day(Date)
   // new Day(dayofGregorian)
   // new Day("2021-06-06"); // Date parser
@@ -74,6 +76,12 @@ class Day {
         if (isNaN(year) || isNaN(month) || isNaN(day)) {
           throw new Error("illegal date");
         }
+      } else if (year instanceof TimeZone) {
+        const tz = year;
+        const d = new Date(new Date().getTime() - (TimeZone.getOffsetLocal() - tz.getOffset()) * 60 * 1000);
+        year = d.getFullYear();
+        month = d.getMonth() + 1;
+        day = d.getDate();
       } else {
         throw new Error("illegal date");
       }
