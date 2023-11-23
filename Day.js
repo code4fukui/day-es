@@ -46,18 +46,30 @@ class Day {
         }
         if (!flg) {
           year = toHalfNum(year);
-          const n2 = year.match(/(..)\s*(\d+|元)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);
+          const n2 = year.match(/(..?)\s*(\d+|元)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);
           if (n2) {
             const wa = WAREKI_JA[n2[1]];
             if (!wa) {
-              throw new Error("illegal date");
+              throw new Error("illegal date: " + n2[1]);
             }
             const y = n2[2] == "元" ? 1 : n2[2];
             year = wa + parseInt(y, 10) - 1;
             month = parseInt(n2[3], 10);
             day = parseInt(n2[4], 10);
           } else {
-            throw new Error("illegal date");
+            const n2 = year.match(/(\D\D?)\s*(\d+)\s*.\s*(\d+)\s*.\s*(\d+)\s*/);
+            if (n2) {
+              const wa = WAREKI_JA[n2[1].trim()];
+              if (!wa) {
+                throw new Error("illegal date: [" + n2[1] + "]");
+              }
+              const y = n2[2];
+              year = wa + parseInt(y, 10) - 1;
+              month = parseInt(n2[3], 10);
+              day = parseInt(n2[4], 10);
+            } else {
+              throw new Error("illegal date");
+            }
           }
         }
       } else if (year instanceof Date) {

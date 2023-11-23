@@ -289,3 +289,9 @@ Deno.test("constructor with TimeZone", () => {
   t.assertEquals(new Day(new TimeZone(9 + 24)), new Day().dayAfter(1));
   t.assertEquals(new Day(new TimeZone(9 - 24)), new Day().dayBefore(1));
 });
+Deno.test("wareki", () => {
+  t.assertEquals(new Day("平成1年1月1日"), new Day("1989-01-01"));
+  t.assertEquals(new Day("平1年1月1日"), new Day("1989-01-01"));
+  t.assertEquals(new Day("昭53.5.31"), new Day("1978-05-31"));
+  t.assertEquals(new Day("令 2.12.23"), new Day("2020-12-23"));
+});
