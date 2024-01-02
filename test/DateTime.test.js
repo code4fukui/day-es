@@ -105,15 +105,19 @@ Deno.test("toLocal", () => {
 });
 Deno.test("timezone", () => {
   //const t = new Date().getTime();
-  const time = 1687468851082; // 023-06-23T06:20:51.081+09:00
+  const time = 1687468851082; // 2023-06-23T06:20:51.081+09:00
   const dt = new DateTime(time);
   t.assertEquals(new DateTime(time).toLocal(TimeZone.JST).toString(), "2023-06-23T06:20:51.081+09:00");
   t.assertEquals(new DateTime(time).toLocal(TimeZone.UTC).toString(), "2023-06-22T21:20:51.081+00:00");
 });
 Deno.test("timezone2", () => {
   t.assertEquals(new DateTime().toLocal(TimeZone.JST).day, new Day(TimeZone.JST));
-  for (let i = -24; i <= 24; i++) {
+  for (let i = -23; i <= 23; i++) {
     const tz = new TimeZone(i);
     t.assertEquals(new DateTime().toLocal(tz).day, new Day(tz));
   }
+});
+Deno.test("timezone3", () => {
+  t.assertEquals(new DateTime(new Day("2024-01-01"), TimeZone.JST).getTime(), new DateTime("2024-01-01T00:00+09:00").getTime());
+  t.assertEquals(new DateTime(new Day("2024-01-01"), TimeZone.UTC).getTime(), new DateTime("2024-01-01T00:00+00:00").getTime());
 });

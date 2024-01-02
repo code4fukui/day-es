@@ -34,6 +34,10 @@ class DateTime {
       const sec = t % (24 * 60 * 60);
       this.day = new Day(nday + orgday);
       this.time = new Time(sec);
+    } else if (time instanceof TimeZone) {
+      this.day = new Day(day);
+      this.time = new Time("00:00");
+      this.timezone = time;
     } else {
       this.day = day || new Day();
       this.time = time || new Time();
