@@ -118,6 +118,9 @@ class Time {
   toStringHM() {
     return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + fix0(this.min || 0, 2);
   }
+  toStringHMS() {
+    return (this.minus ? "-" : "") + (this.hour >= 100 ? this.hour : fix0(this.hour || 0, 2)) + fix0(this.min || 0, 2) + fix0(this.sec || 0, 2);
+  }
   toJSON() {
     return this.toString();
   }
