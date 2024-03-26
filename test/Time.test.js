@@ -137,3 +137,7 @@ Deno.test("hms", () => {
 Deno.test("quantizeSeconds", () => {
   t.assertEquals(new Time("07:09:59.999").quantizeSeconds().toString(), "07:09:59");
 });
+Deno.test("quantizeMinutes", () => {
+  t.assertEquals(new Time("07:09:59.999").quantizeMinutes().toString(), "07:09:00");
+  t.assertEquals(new Time("07:09:59.999").quantizeMinutes().toStringMin(), "07:09");
+});

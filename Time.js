@@ -174,6 +174,9 @@ class Time {
   quantizeSeconds() {
     return new Time(this.hour, this.min, Math.floor(this.sec));
   }
+  quantizeMinutes() {
+    return new Time(this.hour, this.min, 0);
+  }
 }
 
 export { Time };
