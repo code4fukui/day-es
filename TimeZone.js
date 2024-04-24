@@ -27,6 +27,9 @@ class TimeZone {
   toString() {
     return (this.time.toSeconds() >= 0 ? "+" : "") + this.time.toString();
   }
+  toStringHM() {
+    return (this.time.toSeconds() >= 0 ? "+" : "") + this.time.toStringHM();
+  }
   toJSON() {
     return this.toString();
   }

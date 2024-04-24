@@ -22,3 +22,7 @@ Deno.test("preset", () => {
   t.assertEquals(new TimeZone("+09:00"), TimeZone.JST);
   t.assertEquals(new TimeZone("+00:00"), TimeZone.UTC);
 });
+Deno.test("toStringHM", () => {
+  t.assertEquals(new TimeZone("07:00").toStringHM(), "+0700");
+  t.assertEquals(new TimeZone("-07:00").toStringHM(), "-0700");
+});
