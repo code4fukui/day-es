@@ -52,6 +52,9 @@ Deno.test("toString", async () => {
 Deno.test("toStringMin", async () => {
   t.assertEquals(new DateTime("2021-08-22T06:05:04.03+09:00").toStringMin(), "2021-08-22 06:05");
 });
+Deno.test("toStringSec", async () => {
+  t.assertEquals(new DateTime("2021-08-22T06:05:04.03+09:00").toStringSec(), "2021-08-22 06:05:04");
+});
 Deno.test("toStringRFC2822", () => {
   t.assertEquals(new DateTime("2021-09-22T06:05:04.03+09:00").toStringRFC2822(), "Wed, 22 Sep 2021 06:05:04.030 +0900");
 });

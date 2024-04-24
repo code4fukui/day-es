@@ -64,6 +64,9 @@ class DateTime {
   toStringMin() {
     return this.day.toString() + " " + this.time.toStringMin();
   }
+  toStringSec() {
+    return this.day.toString() + " " + this.time.toStringSec();
+  }
   toStringMinLog() {
     return this.day.toStringYMD() + this.time.toStringHM();
   }
