@@ -89,6 +89,9 @@ Deno.test("isTime", async () => {
 Deno.test("toStringMin", async () => {
   t.assertEquals(new Time(120 * 60).toStringMin(), "02:00");
 });
+Deno.test("toStringSec", async () => {
+  t.assertEquals(new Time(120 * 60 + 1.2).toStringSec(), "02:00:01");
+});
 Deno.test("isAfter", async () => {
   t.assertEquals(new Time(9, 0).isAfter(new Time(8, 0)), true);
   t.assertEquals(new Time(9, 0).isAfter(new Time(9, 0)), false);
