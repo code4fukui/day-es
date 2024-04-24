@@ -121,3 +121,7 @@ Deno.test("timezone3", () => {
   t.assertEquals(new DateTime(new Day("2024-01-01"), TimeZone.JST).getTime(), new DateTime("2024-01-01T00:00+09:00").getTime());
   t.assertEquals(new DateTime(new Day("2024-01-01"), TimeZone.UTC).getTime(), new DateTime("2024-01-01T00:00+00:00").getTime());
 });
+Deno.test("toStringISO8601", () => {
+  // https://ja.wikipedia.org/wiki/ISO_8601 basic
+  t.assertEquals(new DateTime("2021-09-22T06:05:04+09:00").toStringISO8601(), "20210922T060504+0900");
+});

@@ -75,6 +75,9 @@ class DateTime {
     const tz = this.timezone.toString().replace(":", "");
     return w[d.getWeek() - 1] + ", " + d.day + " " + m[d.month - 1] + " " + d.year + " " + t + " " + tz;
   }
+  toStringISO8601() { // 20210922T060504+0900
+    return this.day.toStringYMD() + "T" + this.time.toStringHMS() + this.timezone.toStringHM();
+  }
   toJSON() {
     return this.toString();
   }
