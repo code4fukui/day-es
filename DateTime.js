@@ -38,6 +38,10 @@ class DateTime {
       this.day = new Day(day);
       this.time = new Time("00:00");
       this.timezone = time;
+    } else if (day != null && time == null && timezone == null) {
+      this.day = day || new Day();
+      this.time = new Time("00:00");
+      this.timezone = new TimeZone();
     } else {
       this.day = day || new Day();
       this.time = time || new Time();

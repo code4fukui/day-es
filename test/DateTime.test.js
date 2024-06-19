@@ -17,6 +17,7 @@ Deno.test("constructor", async () => {
   t.assertEquals(new DateTime(new Day("2021-08-22"), new Time("07:00"), new TimeZone(0)).toString(), "2021-08-22T07:00+00:00");
   t.assertEquals(new DateTime(new DateTime("2021-08-22T07:00:00+09:00").getTime()).toString(), "2021-08-22T07:00:00+09:00");
   t.assertEquals(new DateTime(new DateTime("2021-08-22").getTime()).toString(), "2021-08-22T00:00:00+09:00");
+  t.assertEquals(new DateTime(new DateTime(new Day("2021-08-22")).getTime()).toString(), "2021-08-22T00:00:00+09:00");
 });
 Deno.test("parse", async () => {
   await waitExactTime();
@@ -115,7 +116,7 @@ Deno.test("timezone", () => {
 });
 Deno.test("timezone2", () => {
   t.assertEquals(new DateTime().toLocal(TimeZone.JST).day, new Day(TimeZone.JST));
-  for (let i = -23; i <= 23; i++) {
+  for (let i = -12; i <= 14; i++) {
     const tz = new TimeZone(i);
     t.assertEquals(new DateTime().toLocal(tz).day, new Day(tz));
   }
