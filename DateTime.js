@@ -13,6 +13,7 @@ class DateTime {
       this.timezone = new TimeZone(Math.floor(tmin / 60), tmin % 60);
     } else if (typeof day == "string" && time == undefined && timezone == undefined) {
       const n = day.match(/(.+)[T\s]([\d:.]+)([Z\+\-])?(.*)/);
+      const pm = day.endsWith("PM");
       if (!n) {
         //throw new Error("unsupported param: " + day);
         this.day = new Day(day);
@@ -21,6 +22,9 @@ class DateTime {
       } else {
         this.day = new Day(n[1]);
         this.time = new Time(n[2]);
+        if (pm) {
+          this.time.hour += 12;
+        }
         if (n[3] != undefined) {
           this.timezone = new TimeZone(n[3] + n[4]);
         } else {

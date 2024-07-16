@@ -129,3 +129,8 @@ Deno.test("toStringISO8601", () => {
   // https://ja.wikipedia.org/wiki/ISO_8601 basic
   t.assertEquals(new DateTime("2021-09-22T06:05:04+09:00").toStringISO8601(), "20210922T060504+0900");
 });
+Deno.test("AM PM", () => {
+  t.assertEquals(new DateTime("2024/7/17 8:30:00").toStringISO8601(), "20240717T083000+0900");
+  t.assertEquals(new DateTime("2024/7/17 8:30:00 AM").toStringISO8601(), "20240717T083000+0900");
+  t.assertEquals(new DateTime("2024/7/17 8:30:00 PM").toStringISO8601(), "20240717T203000+0900");
+});
